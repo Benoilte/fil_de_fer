@@ -1,0 +1,13 @@
+.DS_store
+a.out
+*/a.out
+*/*.o
+*.o
+*.exe
+*.a
+*/*.a
+.vscode/
+.editorconfig
+.metals/
+push_swap
+checker
