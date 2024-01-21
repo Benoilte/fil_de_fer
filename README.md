@@ -60,12 +60,15 @@ This project is about creating a simple wireframe model representation of a 3D l
 - Your program has to represent the model in isometric projection.
 - The coordinates of the landscape are stored in a .fdf file passed as a parameter to your program. Here is an example:
 
+<img width="601" alt="Screen Shot 2024-01-21 at 4 48 07 PM" src="https://github.com/Benoilte/fil_de_fer/assets/104198121/6e5285e6-a59e-458b-9200-37873b010a26">
+
 
 - Each number represents a point in space:
 	- The horizontal position corresponds to its axis.
 	- The vertical position corresponds to its ordinate.
 	- The value corresponds to its altitude.
 
+<img width="615" alt="Screen Shot 2024-01-21 at 4 56 07 PM" src="https://github.com/Benoilte/fil_de_fer/assets/104198121/304a5068-5f30-4edb-b69c-5f3c6b3c3a0a">
 
 - Your program has to display the image in a window.
 - The management of your window must remain smooth (changing to another window, minimizing, and so forth).
