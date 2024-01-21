@@ -36,10 +36,12 @@ This project is about creating a simple wireframe model representation of a 3D l
         <tr>
             <td align="center">External functs.</td>
             <td>
-			<ul>open, close, read, write, malloc, free, perror, strerror, exit</ul>
-			<ul>All functions of the math library (-lm compiler option, man man 3 math)</ul>
-			<ul>All functions of the MiniLibX</ul>
-			<ul>ft_printf and any equivalent YOU coded</ul>
+			<ul>
+				<li>open, close, read, write, malloc, free, perror, strerror, exit</li>
+				<li>All functions of the math library (-lm compiler option, man man 3 math)</li>
+				<li>All functions of the MiniLibX</li>
+				<li>ft_printf and any equivalent YOU coded</li>
+			</ul>
 			</td>
         </tr>
         <tr>
