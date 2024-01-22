@@ -6,13 +6,19 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 17:15:49 by bebrandt          #+#    #+#              #
-#    Updated: 2024/01/21 18:25:13 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/01/22 15:57:15 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# Library name
+
 NAME			=	libft.a
 
+# object directory
+
 OBJ_DIR			=	objs/
+
+# libft ressources
 
 LIBFT_DIR		=	libft_srcs/
 
@@ -32,6 +38,8 @@ LIBFT_OBJ		=	$(LIBFT_SRCS:.c=.o)
 
 LIBFT_OBJS		= 	$(addprefix $(OBJ_DIR),$(LIBFT_OBJ))
 
+# gnl ressources
+
 GNL_DIR			=	gnl_srcs/
 
 GNL_SRCS		=	ft_get_next_line.c ft_get_next_line_utils.c
@@ -39,6 +47,8 @@ GNL_SRCS		=	ft_get_next_line.c ft_get_next_line_utils.c
 GNL_OBJ			=	$(GNL_SRCS:.c=.o)
 
 GNL_OBJS		= 	$(addprefix $(OBJ_DIR),$(GNL_OBJ))
+
+# ft_printf ressources
 
 FT_PRINTF_DIR	=	ft_printf_srcs/
 
@@ -52,7 +62,11 @@ FT_PRINTF_OBJ	=	$(FT_PRINTF_SRCS:.c=.o)
 
 FT_PRINTF_OBJS	= 	$(addprefix $(OBJ_DIR),$(FT_PRINTF_OBJ))
 
+# headers directories
+
 HDRS			=	-Iincludes/.
+
+# usefull command
 
 CC				=	gcc $(HDRS)
 
@@ -71,23 +85,32 @@ NONE		=	\033[0m
 
 all:	$(NAME)
 
+# rule to create libft object
+
 $(OBJ_DIR)%.o:	$(LIBFT_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(GREEN)##### Creating" [ $@ ] " #####$(NONE)"
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+# rule to create gnl object
 
 $(OBJ_DIR)%.o:	$(GNL_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(GREEN)##### Creating" [ $@ ] " #####$(NONE)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+# rule to create ft_printf object
+
 $(OBJ_DIR)%.o:	$(FT_PRINTF_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(GREEN)##### Creating" [ $@ ] " #####$(NONE)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+# program compilation
 $(NAME):	$(LIBFT_OBJS) $(GNL_OBJS) $(FT_PRINTF_OBJS)
 	@$(AR) $(NAME) $^
+
+# usefull rules
 
 clean:
 	@$(RM) $(LIBFT_OBJS)
