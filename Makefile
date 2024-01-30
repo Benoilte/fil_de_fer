@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2024/01/21 18:33:18 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/01/30 17:11:57 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,21 +34,19 @@ OBJ_DIR		=	objs/
 
 UNAME 		= $(shell uname)
 
-MLX_LIB 	= $(MLX_DIR)/libmlx.a
-
 ifeq ($(UNAME), Linux)
-	INCLUDES = -I/usr/include -Iminilibx-linux -Ilibft
-	MLX_DIR = ./minilibx-linux
+	INCLUDES 	= -I/usr/include -Imlx-linux -Ilibft
+	MLX_DIR 	= ./mlx-linux
+	MLX_FLAGS 	= -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11
+	OS_FLAGS	= -D LINUX
 else
-	INCLUDES = -Iminilibx_macos -Ilibft
-	MLX_DIR = ./minilibx_macos
+	INCLUDES	= -Imlx_macos -Ilibft
+	MLX_DIR		= ./mlx_macos
+	MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+	OS_FLAGS	= -D MACOS
 endif
 
-ifeq ($(shell uname), Linux)
-	MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11
-else
-	MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-endif
+MLX_LIB 	= $(MLX_DIR)/libmlx.a
 
 RED			=	\033[0;31m
 GREEN		=	\033[0;32m
@@ -57,7 +55,7 @@ NONE		=	\033[0m
 all: $(MLX_LIB) $(LIBFT_DIR)$(LIBFT_NAME) $(NAME)
 
 $(NAME): $(FDF_OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $@ -L$(LIBFT_DIR) -lft $(MLX_FLAGS)
+	$(CC) $(CFLAGS) -o $@ -L$(LIBFT_DIR) -lft $(MLX_FLAGS)
 
 $(LIBFT_DIR)$(LIBFT_NAME):
 	@make -C $(LIBFT_DIR)

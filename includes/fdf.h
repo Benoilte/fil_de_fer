@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/29 19:05:32 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:28:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # include "../libft/includes/libft.h"
 
-# ifdef OSX
+# ifdef MACOS
 #  include "key_macos.h"
 # elif LINUX
 #  include "key_linux.h"
