@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:47:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/30 18:59:35 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/30 22:37:14 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ void	check_file_name(char *file)
 
 /*
 Exit the program with an error message if the file dos not exist
-Return fd number if file is open
 */
-int	check_file_exist(char *file)
+void	check_file_exist(char *file)
 {
 	int	fd;
 
@@ -41,5 +40,24 @@ int	check_file_exist(char *file)
 		perror("Erorr");
 		exit(EXIT_FAILURE);
 	}
-	return (fd);
+	close(fd);
+}
+
+/*
+Exit the program with an error message if the file is empty
+*/
+void	check_file_empty(char *file)
+{
+	int		fd;
+	char	*line;
+
+	fd = open(file, O_RDONLY);
+	line = get_next_line(fd);
+	if (line == NULL)
+	{
+		ft_printf("Erorr: file is empty\n");
+		exit(EXIT_FAILURE);
+	}
+	free(line);
+	close(fd);
 }
