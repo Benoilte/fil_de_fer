@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/30 17:59:02 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/01/30 17:47:06 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/01/30 18:16:49 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	main(int argc, char **argv)
+void	check_input(char *file)
 {
-	if (argc < 2)
-		ft_printf("Error: fdf file format is missing\n");
-	else if (argc > 2)
-		ft_printf("Error: too many argument is given\n");
-	else
+	check_file_name(file);
+}
+
+void	check_file_name(char *file)
+{
+	char	*format;
+
+	format = ft_strrchr(file, '.');
+	if (format == NULL || ft_strncmp(format, ".fdf", 5))
 	{
-		check_input(argv[1]);
-		ft_printf("file format is correct\n");
+		ft_printf("file format is not correct\n");
+		exit(0);
 	}
-	return (0);
 }
