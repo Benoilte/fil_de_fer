@@ -6,18 +6,15 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:47:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/30 18:38:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:59:35 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	check_input(char *file)
-{
-	check_file_name(file);
-	check_file_exist(file);
-}
-
+/*
+Exit the program with an error message if the argument is not *.fdf file
+*/
 void	check_file_name(char *file)
 {
 	char	*format;
@@ -30,7 +27,11 @@ void	check_file_name(char *file)
 	}
 }
 
-void	check_file_exist(char *file)
+/*
+Exit the program with an error message if the file dos not exist
+Return fd number if file is open
+*/
+int	check_file_exist(char *file)
 {
 	int	fd;
 
@@ -40,5 +41,5 @@ void	check_file_exist(char *file)
 		perror("Erorr");
 		exit(EXIT_FAILURE);
 	}
-	close(fd);
+	return (fd);
 }

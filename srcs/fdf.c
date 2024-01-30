@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/30 18:36:12 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:55:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		check_input(argv[1]);
+		check_file_name(argv[1]);
 		ft_printf("file format is correct\n");
 	}
 	return (0);
