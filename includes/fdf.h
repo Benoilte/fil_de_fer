@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/30 18:55:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:31:57 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # elif LINUX
 #  include "key_linux.h"
 # endif
+
+// fdf.c
+
+void	fdf_init(char *file);
 
 // input_validation.c
 

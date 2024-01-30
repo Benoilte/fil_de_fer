@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/30 18:55:52 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:33:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ int	main(int argc, char **argv)
 	else
 	{
 		check_file_name(argv[1]);
-		ft_printf("file format is correct\n");
+		fdf_init(argv[1]);
 	}
 	return (0);
+}
+
+void	fdf_init(char *file)
+{
+	int	fd;
+
+	fd = check_file_exist(file);
 }
