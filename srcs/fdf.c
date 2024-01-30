@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/30 17:59:02 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:36:12 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 int	main(int argc, char **argv)
 {
 	if (argc < 2)
-		ft_printf("Error: fdf file format is missing\n");
+	{
+		ft_printf("Error: .fdf file format is missing\n");
+		exit(EXIT_FAILURE);
+	}
 	else if (argc > 2)
+	{
 		ft_printf("Error: too many argument is given\n");
+		exit(EXIT_FAILURE);
+	}
 	else
 	{
 		check_input(argv[1]);
