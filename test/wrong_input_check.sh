@@ -10,21 +10,21 @@ echo ""
 echo "$BLUE CALL PROGRAM WITHOUT ARGUMENT $NONE"
 echo ""
 echo "./fdf => $RED"
-echo "Error: .fdf file format is missing $NONE"
+echo "Error: File is missing $NONE"
 ./fdf
 
 echo ""
 echo "$BLUE TOO MANY ARGUMENT $NONE"
 echo ""
 echo "./fdf map_1.fdf map_2.fdf => $RED"
-echo "Error: too many argument is given $NONE"
+echo "Error: Too many argument $NONE"
 ./fdf map_1.fdf map_2.fdf
 
 echo ""
 echo "$BLUE WRONG FORMAT ARG $NONE"
 echo ""
 echo "./fdf map.fd => $RED"
-echo "file format is not correct $NONE"
+echo "Error: Unrecognized format $NONE"
 ./fdf map.fd
 
 echo ""
@@ -38,5 +38,5 @@ echo ""
 echo "$BLUE EMPTY FILE $NONE"
 echo ""
 echo "./fdf test_maps/empty.fdf => $RED"
-echo "Erorr: file is empty $NONE"
+echo "Erorr: Empty file $NONE"
 ./fdf test_maps/empty.fdf

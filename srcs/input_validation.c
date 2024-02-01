@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:47:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/30 22:37:14 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/01 09:06:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ void	check_file_name(char *file)
 	format = ft_strrchr(file, '.');
 	if (format == NULL || ft_strncmp(format, ".fdf", 5))
 	{
-		ft_printf("file format is not correct\n");
+		ft_printf("Error: Unrecognized format\n");
 		exit(EXIT_FAILURE);
 	}
 }
 
 /*
 Exit the program with an error message if the file dos not exist
+msg => Erorr: No such file or directory
 */
 void	check_file_exist(char *file)
 {
@@ -55,7 +56,7 @@ void	check_file_empty(char *file)
 	line = get_next_line(fd);
 	if (line == NULL)
 	{
-		ft_printf("Erorr: file is empty\n");
+		ft_printf("Erorr: Empty file\n");
 		exit(EXIT_FAILURE);
 	}
 	free(line);
