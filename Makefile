@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2024/01/30 22:24:32 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/02/01 14:41:04 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	fdf
 
 SRCS_DIR	=	srcs/
 
-FDF_SRCS	=	fdf.c input_validation.c map.c safe_free.c
+FDF_SRCS	=	fdf.c input_validation.c init_struct.c map.c safe_free.c cleanup.c
 
 FDF_OBJ 	= $(FDF_SRCS:.c=.o)
 
@@ -66,7 +66,7 @@ $(OBJ_DIR)%.o: $(SRCS_DIR)%.c
 	@$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
 
 $(MLX_LIB):
-	@make -C $(MLX_DIR)
+	@make -C $(MLX_DIR) 
 
 clean:
 	@make -C $(LIBFT_DIR) clean

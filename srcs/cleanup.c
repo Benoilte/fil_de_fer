@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   safe_free.c                                        :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 22:26:15 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/01 11:22:08 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/02/01 14:57:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	*free_strstr(char **array)
+void	cleanup_and_exit(t_master *master, char *msg, int status)
 {
-	int	i;
-
-	i = 0;
-	while (array[i])
-		free(array[i++]);
-	free(array);
-	return (NULL);
+	if (master)
+	{
+		if (master->map)
+			cleanup_map(master->map);
+	}
+	if (msg)
+		ft_printf("Error: %s\n", msg);
+	exit (status);
 }
 
-void	*free_empty_matrix(t_point **matrix, int size)
+void	cleanup_map(t_map *map)
 {
-	int	i;
-
-	i = 0;
-	while (i < size)
-		free(matrix[i++]);
-	free(matrix);
-	return (NULL);
+	// if (map->matrix)
+	// 	cleanup_point(map->matrix);
+	free(map);
 }
+
+// void	cleanup_point(t_point *point)
+// {
+// 	if (point->color)
+// 		free(point->color);
+// 	free(point);
+// }

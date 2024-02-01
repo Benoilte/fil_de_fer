@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/01 09:02:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:45:42 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	main(int argc, char **argv)
 {
+	t_master	*master;
+
 	if (argc < 2)
 	{
 		ft_printf("Error: File is missing\n");
@@ -29,21 +31,35 @@ int	main(int argc, char **argv)
 		check_file_name(argv[1]);
 		check_file_exist(argv[1]);
 		check_file_empty(argv[1]);
-		fdf_init(argv[1]);
+		master = init_master();
+		initialization(master);
+		fill_fdf(argv[1], master);
+		ft_printf("height: %d\n", master->map->height);
+		ft_printf("width: %d\n", master->map->width);
+		cleanup_and_exit(master, NULL, 0);
+		// run_fdf(master);
 	}
 	return (0);
 }
 
-void	fdf_init(char *file)
+void	initialization(t_master *master)
 {
-	t_origin_map	*map;
-
-	map = new_map(file);
-	ft_printf("height: %d\n", map->height);
-	ft_printf("width: %d\n", map->width);
-	if (NULL == 0)
-		ft_printf("NULL is equal to 0");
-	else
-		ft_printf("NULL is NOT equal to 0");
-	free(map);
+	master->map = init_map(master);
 }
+
+void	fill_fdf(char *file, t_master *master)
+{
+	master->map_file = file;
+	fill_map(master);
+}
+
+// void	init_fdf(char *file)
+// {
+// 	t_fdf	*fdf;
+// 	t_map	*map;
+
+// 	map = new_map(file);
+// 	ft_printf("height: %d\n", map->height);
+// 	ft_printf("width: %d\n", map->width);
+// 	free(map);
+// }

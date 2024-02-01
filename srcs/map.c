@@ -6,32 +6,32 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/30 22:31:03 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:44:42 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-t_origin_map	*new_map(char *file)
+void	fill_map(t_master *master)
 {
-	t_origin_map	*map;
-
-	map = ft_calloc(1, sizeof(t_origin_map *));
-	map->height = get_height(file);
-	map->width = get_width(file);
-	return (map);
+	master->map->height = get_height(master);
+	master->map->width = get_width(master);
 }
 
-int	get_width(char *file)
+int	get_width(t_master *master)
 {
 	int		fd;
 	int		width;
 	char	*line;
 	char	**coords;
 
-	fd = open(file, O_RDONLY);
+	fd = open(master->map_file, O_RDONLY);
 	line = get_next_line(fd);
+	if (!line)
+		cleanup_and_exit(master, "Memory allocation, function fill_map", 1);
 	coords = ft_split(line, ' ');
+	if (!coords)
+		cleanup_and_exit(master, "Memory allocation, function fill_map", 1);
 	width = 0;
 	while (coords[width])
 		width++;
@@ -41,14 +41,14 @@ int	get_width(char *file)
 	return (width);
 }
 
-int	get_height(char *file)
+int	get_height(t_master *master)
 {
 	int		fd;
 	int		height;
 	int		check_line;
 	char	*line;
 
-	fd = open(file, O_RDONLY);
+	fd = open(master->map_file, O_RDONLY);
 	height = 0;
 	check_line = 1;
 	while (check_line)
