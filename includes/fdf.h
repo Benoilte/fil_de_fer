@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/01 14:44:21 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:30:44 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int				get_height(t_master *master);
 
 // matrix.c
 
-t_point			**get_matrix(int height, int width);
-void			fill_matrix(t_point **matrix, char *file, int h, int w);
+t_point			**init_matrix(t_master *master);
+void			fill_matrix(t_master *master);
 
 // point.c
 
@@ -77,12 +77,13 @@ void			fill_matrix(t_point **matrix, char *file, int h, int w);
 // safe_free.c
 
 void			*free_strstr(char **array);
-void			*free_empty_matrix(t_point **matrix, int size);
+void			free_matrix(t_point **matrix);
 
 // cleanup.c
 
 void			cleanup_and_exit(t_master *master, char *msg, int status);
 void			cleanup_map(t_map *map);
+void			cleanup_matrix(t_point **matrix);
 void			cleanup_point(t_point *point);
 
 #endif

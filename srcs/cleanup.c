@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/01 14:57:52 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:33:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ void	cleanup_and_exit(t_master *master, char *msg, int status)
 
 void	cleanup_map(t_map *map)
 {
-	// if (map->matrix)
-	// 	cleanup_point(map->matrix);
+	if (map->matrix)
+		cleanup_matrix(map->matrix);
 	free(map);
+}
+
+void	cleanup_matrix(t_point **matrix)
+{
+	free_matrix(matrix);
 }
 
 // void	cleanup_point(t_point *point)

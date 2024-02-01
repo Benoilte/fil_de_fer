@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/01 14:44:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:19:13 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	fill_map(t_master *master)
 {
 	master->map->height = get_height(master);
 	master->map->width = get_width(master);
+	master->map->matrix = init_matrix(master);
 }
 
 int	get_width(t_master *master)
@@ -28,10 +29,10 @@ int	get_width(t_master *master)
 	fd = open(master->map_file, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line)
-		cleanup_and_exit(master, "Memory allocation, function fill_map", 1);
+		cleanup_and_exit(master, "Memory allocation, fill_map()", 1);
 	coords = ft_split(line, ' ');
 	if (!coords)
-		cleanup_and_exit(master, "Memory allocation, function fill_map", 1);
+		cleanup_and_exit(master, "Memory allocation, fill_map()", 1);
 	width = 0;
 	while (coords[width])
 		width++;
