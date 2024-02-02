@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:05:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 15:24:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:10:17 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,22 @@ void	ft_print_matrix(t_point ***matrix)
 		x = 0;
 		while (matrix[y][x])
 		{
-			ft_printf("%.2d ", ((matrix[y][x])->z));
+			ft_printf("%2d ", ((matrix[y][x])->z));
 			x++;
 		}
 		ft_printf("\n");
 		y++;
+	}
+}
+
+void	display_struct(t_list *lst)
+{
+	t_list	*tmp;
+
+	tmp = lst;
+	while (tmp)
+	{
+		ft_printf("%s\n", tmp->content);
+		tmp = tmp->next;
 	}
 }

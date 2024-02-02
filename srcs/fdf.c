@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/01 14:45:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:07:03 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_master	*master;
+	t_list		*map_lst;
 
 	if (argc < 2)
 	{
@@ -30,6 +31,8 @@ int	main(int argc, char **argv)
 	{
 		check_file_name(argv[1]);
 		check_file_exist(argv[1]);
+		map_lst = fill_map_lst(argv[1]);
+		display_struct(map_lst);
 		check_file_empty(argv[1]);
 		master = init_master();
 		initialization(master);

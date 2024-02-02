@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 15:13:30 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:05:35 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void			check_file_empty(char *file);
 
 // map.c
 
+t_list			*fill_map_lst(char *file);
 void			fill_map(t_master *master);
 int				get_width(t_master *master);
 int				get_height(t_master *master);
@@ -95,5 +96,6 @@ void			cleanup_point(t_point *point);
 // test_function.c
 
 void			ft_print_matrix(t_point ***matrix);
+void			display_struct(t_list *lst);
 
 #endif
