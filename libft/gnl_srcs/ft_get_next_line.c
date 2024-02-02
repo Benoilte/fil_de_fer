@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:52:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/21 18:05:07 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:32:40 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ return NULL If an error occur.
 */
 char	*get_next_line(int fd)
 {
-	static char	stash[OPEN_MAX][BUFFER_SIZE + 1];
+	static char	stash[BUFFER_SIZE + 1];
 	t_gnl_lst	*lst;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return ((void *)0);
 	lst = (void *)0;
-	return (ft_read_and_check_line(fd, stash[fd], lst));
+	return (ft_read_and_check_line(fd, stash, lst));
 }
 
 /*
@@ -89,7 +89,7 @@ char	*ft_get_line(char *stash, t_gnl_lst *lst)
 	char			line[BUFFER_SIZE + 1];
 
 	i = 0;
-	while (stash [i] && stash[i] != '\n')
+	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (stash[i] == '\n')
 		i++;

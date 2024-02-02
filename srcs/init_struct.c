@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 11:35:22 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:12:41 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ t_point	*init_point(t_master *master)
 	point = (t_point *)malloc(1 * sizeof(t_point));
 	if (!point)
 		cleanup_and_exit(master, "Memory allocation, init_point()", 1);
-	point->color = NULL;
 	return (point);
 }

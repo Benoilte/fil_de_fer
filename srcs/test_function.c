@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   test_function.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 15:29:15 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/02/02 15:05:24 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/02/02 15:24:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	cleanup_and_exit(t_master *master, char *msg, int status)
-{
-	if (master)
-	{
-		if (master->map)
-			cleanup_map(master->map);
-	}
-	if (msg)
-		ft_printf("Error: %s\n", msg);
-	exit (status);
-}
-
-void	cleanup_map(t_map *map)
-{
-	if (map->matrix)
-		cleanup_matrix(map->matrix);
-	free(map);
-}
-
-void	cleanup_matrix(t_point ***matrix)
+void	ft_print_matrix(t_point ***matrix)
 {
 	int	y;
-	int	x;
+	int x;
 
 	y = 0;
 	while (matrix[y])
@@ -42,16 +23,10 @@ void	cleanup_matrix(t_point ***matrix)
 		x = 0;
 		while (matrix[y][x])
 		{
-			cleanup_point(matrix[y][x]);
+			ft_printf("%.2d ", ((matrix[y][x])->z));
 			x++;
 		}
-		free(matrix[y]);
+		ft_printf("\n");
 		y++;
 	}
-	free(matrix);
-}
-
-void	cleanup_point(t_point *point)
-{
-	free(point);
 }

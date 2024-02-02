@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 12:19:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:13:30 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 typedef struct s_point
 {
 	int		z;
-	char	*color;
+	char	color[10];
 }	t_point;
 
 typedef struct s_map
@@ -75,11 +75,15 @@ void			fill_matrix(t_master *master);
 
 // point.c
 
+void			fill_point(t_master *master, t_point *point, char *val);
 
 // safe_free.c
 
 void			*free_strstr(char **array);
-void			free_matrix(t_point **matrix);
+
+// check_malloc.c
+
+void			is_malloc_or_exit(t_master *master, void *ptr, char *msg);
 
 // cleanup.c
 
@@ -87,5 +91,9 @@ void			cleanup_and_exit(t_master *master, char *msg, int status);
 void			cleanup_map(t_map *map);
 void			cleanup_matrix(t_point ***matrix);
 void			cleanup_point(t_point *point);
+
+// test_function.c
+
+void			ft_print_matrix(t_point ***matrix);
 
 #endif

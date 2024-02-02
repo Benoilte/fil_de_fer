@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 12:16:59 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:19:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,39 +44,35 @@ void	init_width_matrix(t_master *master, t_point **matrix)
 	while (x <= master->map->width)
 		matrix[x++] = NULL;
 	x = 0;
-	while (matrix[x])
+	while (x < master->map->width)
 		matrix[x++] = init_point(master);
 }
 
-// void	fill_matrix(t_master *master)
-// {
-// 	int		fd;
-// 	int		x;
-// 	int		y;
-// 	char	*line;
-// 	char	**x_tab;
+void	fill_matrix(t_master *master)
+{
+	int		fd;
+	int		x;
+	int		y;
+	char	*line;
+	char	**value_tab;
 
-// 	x = 0;
-// 	y = 0;
-// 	fd = open(master->map_file, O_RDONLY);
-// 	while (y < master->map->height)
-// 	{
-// 		line = get_next_line(fd);
-// 		if (!line)
-// 			cleanup_and_exit(master, "Memory allocation, fill_matrix()", 1);
-// 		x_tab = ft_split(line, ' ');
-// 		if (!x_tab)
-// 			cleanup_and_exit(master, "Memory allocation, fill_matrix()", 1);
-// 		while (x < master->map->width)
-// 		{
-// 			master->map->matrix[y][x] = new_point(x_tab[x]);
-// 			x++;
-// 		}
-// 		free_strstr(x_tab);
-// 		free(line);
-// 		y++;
-// 	}
-// 	close(fd);
-// }
-
-// void	fill_x_pos
+	y = 0;
+	fd = open(master->map_file, O_RDONLY);
+	while ((master->map->matrix)[y])
+	{
+		line = get_next_line(fd);
+		is_malloc_or_exit(master, line, "Memory allocation, fill_matrix()");
+		value_tab = ft_split(line, ' ');
+		is_malloc_or_exit(master, value_tab, "Memory allocation, fill_matrix()");
+		x = 0;
+		while ((master->map->matrix)[y][x])
+		{
+			fill_point(master, (master->map->matrix)[y][x], value_tab[x]);
+			x++;
+		}
+		free_strstr(value_tab);
+		free(line);
+		y++;
+	}
+	close(fd);
+}

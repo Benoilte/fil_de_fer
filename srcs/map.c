@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/01 15:19:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:11:15 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	fill_map(t_master *master)
 	master->map->height = get_height(master);
 	master->map->width = get_width(master);
 	master->map->matrix = init_matrix(master);
+	fill_matrix(master);
+	ft_print_matrix(master->map->matrix);
 }
 
 int	get_width(t_master *master)
