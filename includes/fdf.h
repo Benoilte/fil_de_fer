@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 18:17:08 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:22:13 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ typedef struct s_map
 
 typedef struct s_master
 {
-	char	*map_file;
+	t_list	*map_file;
 	t_map	*map;
 }	t_master;
 
 // fdf.c
 
 void			initialization(t_master *master);
-void			fill_fdf(char *file, t_master *master);
+void			fill_fdf(t_list *map_lst, t_master *master);
 
 // init_struct.c
 

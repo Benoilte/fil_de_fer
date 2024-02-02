@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 18:13:11 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:20:44 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		check_file_empty(map_lst);
 		master = init_master();
 		initialization(master);
-		fill_fdf(argv[1], master);
+		fill_fdf(map_lst, master);
 		ft_printf("height: %d\n", master->map->height);
 		ft_printf("width: %d\n", master->map->width);
 		cleanup_and_exit(master, NULL, 0);
@@ -50,9 +50,9 @@ void	initialization(t_master *master)
 	master->map = init_map(master);
 }
 
-void	fill_fdf(char *file, t_master *master)
+void	fill_fdf(t_list *map_lst, t_master *master)
 {
-	master->map_file = file;
+	master->map_file = map_lst;
 	fill_map(master);
 }
 
