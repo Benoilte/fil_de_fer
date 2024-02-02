@@ -6,32 +6,46 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/01 15:30:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:16:59 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-t_point	**init_matrix(t_master *master)
+t_point	***init_matrix(t_master *master)
 {
-	t_point	**matrix;
-	int		i;
+	t_point	***matrix;
+	int		y;
 
-	matrix = (t_point **)malloc(master->map->height * sizeof(t_point *));
+	matrix = (t_point ***)malloc(master->map->height * sizeof(t_point **));
 	if (!matrix)
 		cleanup_and_exit(master, "Memory allocation, get_matrix()", 1);
-	i = 0;
-	while (i < (master->map->height))
-		matrix[i++] = NULL;
-	i = 0;
-	while (i < (master->map->height))
+	y = 0;
+	while (y <= master->map->height)
+		matrix[y++] = NULL;
+	y = 0;
+	while (y < master->map->height)
 	{
-		matrix[i] = (t_point *)malloc(master->map->width * sizeof(t_point));
-		if (!matrix[i])
+		matrix[y] = (t_point **)malloc(master->map->width * sizeof(t_point *));
+		if (!matrix[y])
 			cleanup_and_exit(master, "Memory allocation, get_matrix()", 1);
-		i++;
+		else
+			init_width_matrix(master, matrix[y]);
+		y++;
 	}
 	return (matrix);
+}
+
+void	init_width_matrix(t_master *master, t_point **matrix)
+{
+	int	x;
+
+	x = 0;
+	while (x <= master->map->width)
+		matrix[x++] = NULL;
+	x = 0;
+	while (matrix[x])
+		matrix[x++] = init_point(master);
 }
 
 // void	fill_matrix(t_master *master)

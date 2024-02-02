@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/01 15:33:52 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:22:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,29 @@ void	cleanup_map(t_map *map)
 	free(map);
 }
 
-void	cleanup_matrix(t_point **matrix)
+void	cleanup_matrix(t_point ***matrix)
 {
-	free_matrix(matrix);
+	int	y;
+	int	x;
+
+	y = 0;
+	x = 0;
+	while (matrix[y])
+	{
+		while (matrix[y][x])
+		{
+			cleanup_point(matrix[y][x]);
+			x++;
+		}
+		free(matrix[y]);
+		y++;
+	}
+	free(matrix);
 }
 
-// void	cleanup_point(t_point *point)
-// {
-// 	if (point->color)
-// 		free(point->color);
-// 	free(point);
-// }
+void	cleanup_point(t_point *point)
+{
+	if (point->color)
+		free(point->color);
+	free(point);
+}
