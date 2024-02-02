@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2024/02/02 15:04:39 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/02/02 17:35:37 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ UNAME 		= $(shell uname)
 
 ifeq ($(UNAME), Linux)
 	INCLUDES 	= -I/usr/include -Imlx-linux -Ilibft
-	MLX_DIR 	= ./mlx-linux
+	MLX_DIR 	= ./mlx_linux
 	MLX_FLAGS 	= -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11
 	OS_FLAGS	= -D LINUX
 else
@@ -66,7 +66,7 @@ $(OBJ_DIR)%.o: $(SRCS_DIR)%.c
 	@$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
 
 $(MLX_LIB):
-	@make -C $(MLX_DIR) 
+	@make -C $(MLX_DIR)
 
 clean:
 	@make -C $(LIBFT_DIR) clean
