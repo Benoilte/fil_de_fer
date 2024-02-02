@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 18:05:35 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:17:08 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_point			*init_point(t_master *master);
 
 void			check_file_name(char *file);
 void			check_file_exist(char *file);
-void			check_file_empty(char *file);
+void			check_file_empty(t_list *map_lst);
 
 // map.c
 
