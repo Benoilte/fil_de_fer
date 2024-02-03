@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:26:15 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 14:53:26 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 14:27:00 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,9 @@ void	*free_strstr(char **array)
 		free(array[i++]);
 	free(array);
 	return (NULL);
+}
+
+void	del(void *content)
+{
+	free(content);
 }

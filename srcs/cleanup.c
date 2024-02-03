@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 15:29:15 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 14:40:58 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void	cleanup_and_exit(t_master *master, char *msg, int status)
 {
 	if (master)
 	{
+		if (master->map_file)
+			ft_lstclear(&(master->map_file), &del);
 		if (master->map)
 			cleanup_map(master->map);
+		free(master);
 	}
 	if (msg)
 		ft_printf("Error: %s\n", msg);

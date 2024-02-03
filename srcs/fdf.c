@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 18:20:44 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:46:22 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 		master = init_master();
 		initialization(master);
 		fill_fdf(map_lst, master);
+		ft_print_matrix(master->map->matrix);
 		ft_printf("height: %d\n", master->map->height);
 		ft_printf("width: %d\n", master->map->width);
 		cleanup_and_exit(master, NULL, 0);

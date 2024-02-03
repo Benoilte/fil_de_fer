@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 15:19:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:44:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,21 @@ t_point	***init_matrix(t_master *master)
 {
 	t_point	***matrix;
 	int		y;
+	int		height;
+	int		width;
 
-	matrix = (t_point ***)malloc(master->map->height * sizeof(t_point **));
+	height = master->map->height;
+	width = master->map->width;
+	matrix = (t_point ***)malloc((height + 1) * sizeof(t_point **));
 	if (!matrix)
 		cleanup_and_exit(master, "Memory allocation, get_matrix()", 1);
 	y = 0;
-	while (y <= master->map->height)
+	while (y <= height)
 		matrix[y++] = NULL;
 	y = 0;
-	while (y < master->map->height)
+	while (y < height)
 	{
-		matrix[y] = (t_point **)malloc(master->map->width * sizeof(t_point *));
+		matrix[y] = (t_point **)malloc((width + 1) * sizeof(t_point *));
 		if (!matrix[y])
 			cleanup_and_exit(master, "Memory allocation, get_matrix()", 1);
 		else
@@ -50,29 +54,25 @@ void	init_width_matrix(t_master *master, t_point **matrix)
 
 void	fill_matrix(t_master *master)
 {
-	int		fd;
 	int		x;
 	int		y;
-	char	*line;
-	char	**value_tab;
+	char	**val_tab;
+	t_list	*tmp;
 
 	y = 0;
-	fd = open(master->map_file, O_RDONLY);
-	while ((master->map->matrix)[y])
+	tmp = master->map_file;
+	while (tmp)
 	{
-		line = get_next_line(fd);
-		is_malloc_or_exit(master, line, "Memory allocation, fill_matrix()");
-		value_tab = ft_split(line, ' ');
-		is_malloc_or_exit(master, value_tab, "Memory allocation, fill_matrix()");
+		val_tab = ft_split(tmp->content, ' ');
+		is_malloc_or_exit(master, val_tab, "Memory allocation, fill_matrix()");
 		x = 0;
 		while ((master->map->matrix)[y][x])
 		{
-			fill_point(master, (master->map->matrix)[y][x], value_tab[x]);
+			fill_point(master, (master->map->matrix)[y][x], val_tab[x]);
 			x++;
 		}
-		free_strstr(value_tab);
-		free(line);
+		free_strstr(val_tab);
+		tmp = tmp->next;
 		y++;
 	}
-	close(fd);
 }

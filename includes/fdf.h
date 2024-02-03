@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 18:22:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 14:27:38 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void			fill_point(t_master *master, t_point *point, char *val);
 // safe_free.c
 
 void			*free_strstr(char **array);
+void			del(void *content);
 
 // check_malloc.c
 
