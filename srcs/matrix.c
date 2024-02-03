@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 13:44:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 15:36:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ t_point	***init_matrix(t_master *master)
 	height = master->map->height;
 	width = master->map->width;
 	matrix = (t_point ***)malloc((height + 1) * sizeof(t_point **));
-	if (!matrix)
-		cleanup_and_exit(master, "Memory allocation, get_matrix()", 1);
+	is_malloc_or_exit(master, matrix, "Memory allocation, get_matrix()");
 	y = 0;
 	while (y <= height)
 		matrix[y++] = NULL;
@@ -31,10 +30,8 @@ t_point	***init_matrix(t_master *master)
 	while (y < height)
 	{
 		matrix[y] = (t_point **)malloc((width + 1) * sizeof(t_point *));
-		if (!matrix[y])
-			cleanup_and_exit(master, "Memory allocation, get_matrix()", 1);
-		else
-			init_width_matrix(master, matrix[y]);
+		is_malloc_or_exit(master, matrix[y], "Memory allocation, get_matrix()");
+		init_width_matrix(master, matrix[y]);
 		y++;
 	}
 	return (matrix);
@@ -60,7 +57,7 @@ void	fill_matrix(t_master *master)
 	t_list	*tmp;
 
 	y = 0;
-	tmp = master->map_file;
+	tmp = master->file_lst;
 	while (tmp)
 	{
 		val_tab = ft_split(tmp->content, ' ');

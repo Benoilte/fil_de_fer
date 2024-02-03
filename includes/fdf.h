@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 14:27:38 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 15:26:59 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,19 @@ typedef struct s_map
 
 typedef struct s_master
 {
-	t_list	*map_file;
+	char	*file_name;
+	t_list	*file_lst;
 	t_map	*map;
 }	t_master;
 
 // fdf.c
 
 void			initialization(t_master *master);
-void			fill_fdf(t_list *map_lst, t_master *master);
+void			fill_fdf(t_master *master);
 
 // init_struct.c
 
-t_master		*init_master(void);
+t_master		*init_master(char *file);
 t_map			*init_map(t_master *master);
 t_point			*init_point(t_master *master);
 
@@ -59,14 +60,13 @@ t_point			*init_point(t_master *master);
 
 void			check_file_name(char *file);
 void			check_file_exist(char *file);
-void			check_file_empty(t_list *map_lst);
+void			check_file_empty(t_master *master);
 
 // map.c
 
-t_list			*fill_map_lst(char *file);
+t_list			*fill_map_lst(t_master *master);
 void			fill_map(t_master *master);
 int				get_width(t_master *master);
-int				get_height(t_master *master);
 
 // matrix.c
 
@@ -86,13 +86,15 @@ void			del(void *content);
 // check_malloc.c
 
 void			is_malloc_or_exit(t_master *master, void *ptr, char *msg);
+int				open_file_or_exit(t_master *master);
 
 // cleanup.c
 
-void			cleanup_and_exit(t_master *master, char *msg, int status);
-void			cleanup_map(t_map *map);
-void			cleanup_matrix(t_point ***matrix);
-void			cleanup_point(t_point *point);
+void			clean_and_exit(t_master *master, char *msg, int status);
+void			clean(t_master *master);
+void			clean_map(t_map *map);
+void			clean_matrix(t_point ***matrix);
+void			clean_point(t_point *point);
 
 // test_function.c
 

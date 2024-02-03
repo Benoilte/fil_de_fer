@@ -6,35 +6,40 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 14:40:58 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 15:33:03 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	cleanup_and_exit(t_master *master, char *msg, int status)
+void	clean_and_exit(t_master *master, char *msg, int status)
 {
-	if (master)
-	{
-		if (master->map_file)
-			ft_lstclear(&(master->map_file), &del);
-		if (master->map)
-			cleanup_map(master->map);
-		free(master);
-	}
+	clean(master);
 	if (msg)
 		ft_printf("Error: %s\n", msg);
 	exit (status);
 }
 
-void	cleanup_map(t_map *map)
+void	clean(t_master *master)
+{
+	if (master)
+	{
+		if (master->file_lst)
+			ft_lstclear(&(master->file_lst), &del);
+		if (master->map)
+			clean_map(master->map);
+		free(master);
+	}
+}
+
+void	clean_map(t_map *map)
 {
 	if (map->matrix)
-		cleanup_matrix(map->matrix);
+		clean_matrix(map->matrix);
 	free(map);
 }
 
-void	cleanup_matrix(t_point ***matrix)
+void	clean_matrix(t_point ***matrix)
 {
 	int	y;
 	int	x;
@@ -45,7 +50,7 @@ void	cleanup_matrix(t_point ***matrix)
 		x = 0;
 		while (matrix[y][x])
 		{
-			cleanup_point(matrix[y][x]);
+			clean_point(matrix[y][x]);
 			x++;
 		}
 		free(matrix[y]);
@@ -54,7 +59,7 @@ void	cleanup_matrix(t_point ***matrix)
 	free(matrix);
 }
 
-void	cleanup_point(t_point *point)
+void	clean_point(t_point *point)
 {
 	free(point);
 }

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 13:46:22 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 15:28:15 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_master	*master;
-	t_list		*map_lst;
 
 	if (argc < 2)
 	{
@@ -31,39 +30,26 @@ int	main(int argc, char **argv)
 	{
 		check_file_name(argv[1]);
 		check_file_exist(argv[1]);
-		map_lst = fill_map_lst(argv[1]);
-		display_struct(map_lst);
-		check_file_empty(map_lst);
-		master = init_master();
+		master = init_master(argv[1]);
 		initialization(master);
-		fill_fdf(map_lst, master);
+		check_file_empty(master);
+		fill_fdf(master);
 		ft_print_matrix(master->map->matrix);
 		ft_printf("height: %d\n", master->map->height);
 		ft_printf("width: %d\n", master->map->width);
-		cleanup_and_exit(master, NULL, 0);
-		// run_fdf(master);
+		clean(master);
 	}
 	return (0);
 }
 
 void	initialization(t_master *master)
 {
+	master->file_lst = fill_map_lst(master);
+	display_struct(master->file_lst);
 	master->map = init_map(master);
 }
 
-void	fill_fdf(t_list *map_lst, t_master *master)
+void	fill_fdf(t_master *master)
 {
-	master->map_file = map_lst;
 	fill_map(master);
 }
-
-// void	init_fdf(char *file)
-// {
-// 	t_fdf	*fdf;
-// 	t_map	*map;
-
-// 	map = new_map(file);
-// 	ft_printf("height: %d\n", map->height);
-// 	ft_printf("width: %d\n", map->width);
-// 	free(map);
-// }

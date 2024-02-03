@@ -6,20 +6,20 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/02 15:12:41 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 15:31:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-t_master	*init_master(void)
+t_master	*init_master(char *file)
 {
 	t_master	*master;
 
 	master = (t_master *)malloc(1 * sizeof(t_master));
-	if (!master)
-		cleanup_and_exit(master, "Memory allocation, init_master()", 1);
-	master->map_file = NULL;
+	is_malloc_or_exit(master, master, "Memory allocation, init_master()");
+	master->file_name = file;
+	master->file_lst = NULL;
 	master->map = NULL;
 	return (master);
 }
@@ -29,8 +29,7 @@ t_map	*init_map(t_master *master)
 	t_map	*map;
 
 	map = (t_map *)malloc(1 * sizeof(t_map));
-	if (!map)
-		cleanup_and_exit(master, "Memory allocation, init_map()", 1);
+	is_malloc_or_exit(master, map, "Memory allocation, init_map()");
 	map->matrix = NULL;
 	return (map);
 }
@@ -40,7 +39,6 @@ t_point	*init_point(t_master *master)
 	t_point	*point;
 
 	point = (t_point *)malloc(1 * sizeof(t_point));
-	if (!point)
-		cleanup_and_exit(master, "Memory allocation, init_point()", 1);
+	is_malloc_or_exit(master, point, "Memory allocation, init_point()");
 	return (point);
 }

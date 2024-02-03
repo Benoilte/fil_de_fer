@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 13:46:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/03 15:32:34 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 parse txt file and return a linked list of struct with a string as member.
 */
-t_list	*fill_map_lst(char *file)
+t_list	*fill_map_lst(t_master *master)
 {
 	int		fd;
 	int		check_new_line;
@@ -24,7 +24,7 @@ t_list	*fill_map_lst(char *file)
 	t_list	*input;
 
 	input = NULL;
-	fd = open(file, O_RDONLY);
+	fd = open_file_or_exit(master);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -46,7 +46,7 @@ t_list	*fill_map_lst(char *file)
 
 void	fill_map(t_master *master)
 {
-	master->map->height = ft_lstsize(master->map_file);
+	master->map->height = ft_lstsize(master->file_lst);
 	master->map->width = get_width(master);
 	master->map->matrix = init_matrix(master);
 	fill_matrix(master);
@@ -57,35 +57,11 @@ int	get_width(t_master *master)
 	int		width;
 	char	**coords;
 
-	coords = ft_split(master->map_file->content, ' ');
-	if (!coords)
-		cleanup_and_exit(master, "Memory allocation, fill_map()", 1);
+	coords = ft_split(master->file_lst->content, ' ');
+	is_malloc_or_exit(master, coords, "Memory allocation, fill_map()");
 	width = 0;
 	while (coords[width])
 		width++;
 	free_strstr(coords);
 	return (width);
 }
-
-// int	get_height(t_master *master)
-// {
-// 	int		fd;
-// 	int		height;
-// 	int		check_line;
-// 	char	*line;
-
-// 	fd = open(master->map_file, O_RDONLY);
-// 	height = 0;
-// 	check_line = 1;
-// 	while (check_line)
-// 	{
-// 		line = get_next_line(fd);
-// 		if (line)
-// 			height++;
-// 		else
-// 			check_line = 0;
-// 		free(line);
-// 	}
-// 	close(fd);
-// 	return (height);
-// }
