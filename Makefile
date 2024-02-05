@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2024/02/02 17:35:37 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/02/05 15:42:29 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ $(LIBFT_DIR)$(LIBFT_NAME):
 $(OBJ_DIR)%.o: $(SRCS_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(GREEN)##### Creating" [ $@ ] " #####$(NONE)"
-	@$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+	@$(CC) $(CFLAGS) $(OS_FLAGS) -c -o $@ $< $(INCLUDES)
 
 $(MLX_LIB):
 	@make -C $(MLX_DIR)

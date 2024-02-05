@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 15:31:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:29:04 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_master	*init_master(char *file)
 	master->file_name = file;
 	master->file_lst = NULL;
 	master->map = NULL;
+	master->mlx = NULL;
+	master->data_img = NULL;
 	return (master);
 }
 
