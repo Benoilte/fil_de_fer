@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 15:32:34 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:15:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ int	get_width(t_master *master)
 
 	coords = ft_split(master->file_lst->content, ' ');
 	is_malloc_or_exit(master, coords, "Memory allocation, fill_map()");
-	width = 0;
-	while (coords[width])
-		width++;
+	width = check_size_strstr(coords);
 	free_strstr(coords);
 	return (width);
 }
