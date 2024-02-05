@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 19:17:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:42:28 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	fill_fdf(t_master *master)
 
 void	fdf_run(t_master *master)
 {
+	draw_map(master);
 	mlx_key_hook(master->mlx->win_ptr, &key_hook, master);
 	mlx_hook(master->mlx->win_ptr, 17, 1L << 19, &close_mlx, master);
 	mlx_loop(master->mlx->mlx_ptr);

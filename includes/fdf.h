@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 19:10:04 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:51:16 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,11 @@ void			fill_point(t_master *master, t_point *point, char *val);
 
 int				close_mlx(t_master *master);
 int				key_hook(int key, t_master *master);
+
+// draw.c
+
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void			draw_map(t_master *master);
 
 // safe_free.c
 
