@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 18:22:00 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:31:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,9 @@ void	fill_fdf(t_master *master)
 	master->mlx = mlx;
 }
 
-int	close_mlx(t_master *master)
-{
-	mlx_destroy_window(master->mlx->mlx_ptr, (master->mlx->win_ptr));
-	clean_and_exit(master, NULL, 0);
-	return (0);
-}
-
 void	fdf_run(t_master *master)
 {
+	mlx_key_hook(master->mlx->win_ptr, &key_hook, master);
 	mlx_hook(master->mlx->win_ptr, 17, 1L << 19, &close_mlx, master);
 	mlx_loop(master->mlx->mlx_ptr);
 }
