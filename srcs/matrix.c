@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 15:36:55 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:11:03 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	fill_matrix(t_master *master)
 	{
 		val_tab = ft_split(tmp->content, ' ');
 		is_malloc_or_exit(master, val_tab, "Memory allocation, fill_matrix()");
+		if (check_size_strstr(val_tab) != master->map->width)
+			clean_and_exit(master, "Width of the map are not the same", 1);
 		x = 0;
 		while ((master->map->matrix)[y][x])
 		{

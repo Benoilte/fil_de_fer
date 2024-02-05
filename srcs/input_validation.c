@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:47:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 15:16:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:09:48 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,19 @@ void	check_file_empty(t_master *master)
 		ft_printf("Erorr: Empty file\n");
 		exit(EXIT_FAILURE);
 	}
+}
+
+/*
+Return the tab size of string
+*/
+int	check_size_strstr(char **strstr)
+{
+	int	i;
+
+	if (!strstr)
+		return (0);
+	i = 0;
+	while (strstr[i])
+		i++;
+	return (i);
 }
