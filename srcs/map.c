@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/06 18:17:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/06 19:50:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,21 @@ t_list	*fill_map_lst(t_master *master)
 
 void	fill_map(t_master *master)
 {
+	int	step;
+
 	master->map->height = ft_lstsize(master->file_lst);
 	master->map->width = get_width(master);
 	master->map->matrix = init_matrix(master);
 	master->map->step = 30;
-	// master->map->height_offset = ((WIN_HEIGHT / 2) - ((master->map->height * master->map->step) / 2));
-	// master->map->width_offset = ((WIN_WIDTH / 2) - ((master->map->width * master->map->step) / 2));
-	master->map->height_offset = (WIN_HEIGHT / 2);
-	master->map->width_offset = (WIN_WIDTH / 2);
+	step = master->map->step;
+	master->map->cart_height_offset = ((WIN_HEIGHT / 2)
+			- ((master->map->height * step) / 2));
+	master->map->cart_width_offset = ((WIN_WIDTH / 2)
+			- ((master->map->width * step) / 2));
+	master->map->iso_height_offset = (WIN_HEIGHT / 2)
+		- ((((master->map->width * step) * sin(120))
+				+ ((master->map->height * step) * sin(120 + 2))) / 2);
+	master->map->iso_width_offset = (WIN_WIDTH / 2);
 	fill_matrix(master);
 }
 
