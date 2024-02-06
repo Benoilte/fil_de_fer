@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 19:51:16 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:15:24 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@
 
 typedef struct s_point
 {
+	int		x;
+	int		y;
 	int		z;
+	int		x_iso_dst;
+	int		y_iso_dst;
 	char	color[10];
 }	t_point;
 
@@ -40,6 +44,9 @@ typedef struct s_map
 	int		width;
 	int		z_max;
 	int		z_min;
+	int		width_offset;
+	int		height_offset;
+	int		step;
 	t_point	***matrix;
 }	t_map;
 
@@ -98,7 +105,8 @@ void			fill_matrix(t_master *master);
 
 // point.c
 
-void			fill_point(t_master *master, t_point *point, char *val);
+void			fill_point(t_master *master, int x, int y, char *val);
+void			cart_to_iso(t_master *master, t_point *point, int x, int y);
 
 // event.c
 

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 19:11:03 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:00:44 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	fill_matrix(t_master *master)
 		x = 0;
 		while ((master->map->matrix)[y][x])
 		{
-			fill_point(master, (master->map->matrix)[y][x], val_tab[x]);
+			fill_point(master, x, y, val_tab[x]);
 			x++;
 		}
 		free_strstr(val_tab);

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 19:15:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:17:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ void	fill_map(t_master *master)
 	master->map->height = ft_lstsize(master->file_lst);
 	master->map->width = get_width(master);
 	master->map->matrix = init_matrix(master);
+	master->map->step = 30;
+	// master->map->height_offset = ((WIN_HEIGHT / 2) - ((master->map->height * master->map->step) / 2));
+	// master->map->width_offset = ((WIN_WIDTH / 2) - ((master->map->width * master->map->step) / 2));
+	master->map->height_offset = (WIN_HEIGHT / 2);
+	master->map->width_offset = (WIN_WIDTH / 2);
 	fill_matrix(master);
 }
 
