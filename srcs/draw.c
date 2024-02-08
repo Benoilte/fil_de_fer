@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:20:20 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/08 15:39:56 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/08 16:02:24 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ void	draw_map(t_master *master)
 	master->data_img = img;
 	matrix = master->map->matrix;
 	y = 0;
+	// draw_lines(master, 0, 0);
 	while (matrix[y])
 	{
 		x = 0;
 		while (matrix[y][x])
 		{
-			draw_lines(master, x, y);
+			draw_lines(master, 0, 0);
 			// if ((matrix[y][x])->z != 0)
 			// 	my_mlx_pixel_put(img,
 			// 		(matrix[y][x])->x_iso_dst, (matrix[y][x])->y_iso_dst,
