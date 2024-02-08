@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/08 13:22:59 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:53:24 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,13 @@ int	get_dist_btwn_iso_point(t_master *master)
 	h = master->map->height;
 	w = master->map->width;
 	z = ((master->map->matrix)[h -1][w - 1])->z;
-	d = 40;
-	while ((y_cart_to_iso(w * d, h * d, z)
-			+ (((WIN_HEIGHT - y_cart_to_iso(w * d, h * d, z)) / 2))
+	d = 10;
+	while ((y_cart_to_iso(w * d, h * d, z * d)
+			+ (((WIN_HEIGHT - y_cart_to_iso(w * d, h * d, z * d)) / 2))
 			>= master->win_height) && d > 1)
 		d--;
 	z = ((master->map->matrix)[0][w - 1])->z;
-	while (((x_cart_to_iso(0, w * d, z)) + (WIN_WIDTH / 2)
+	while (((x_cart_to_iso(0, w * d, z * d)) + (WIN_WIDTH / 2)
 			>= master->win_width) && d > 1)
 		d--;
 	return (d);
