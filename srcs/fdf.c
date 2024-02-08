@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 19:42:28 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:03:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ int	main(int argc, char **argv)
 		initialization(master);
 		check_file_empty(master);
 		fill_fdf(master);
-		fdf_run(master);
-		// ft_print_matrix(master->map->matrix);
+		// ft_printf("point_dist: %d\n", master->map->point_dist);
 		// ft_printf("height: %d\n", master->map->height);
 		// ft_printf("width: %d\n", master->map->width);
+		fdf_run(master);
+		// ft_print_matrix(master->map->matrix);
 		clean(master);
 	}
 	return (0);
@@ -54,6 +55,9 @@ void	fill_fdf(t_master *master)
 {
 	t_vars	*mlx;
 
+	master->win_width = 1920;
+	master->win_height = 1080;
+	ft_strlcpy(master->proj, "ISO", 4);
 	fill_map(master);
 	mlx = (t_vars *)malloc(sizeof(t_vars));
 	is_malloc_or_exit(master, mlx, "Memory allocation, fill_fdf()");

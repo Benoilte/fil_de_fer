@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/06 19:47:07 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:01:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_map
 	int		cart_height_offset;
 	int		iso_width_offset;
 	int		iso_height_offset;
-	int		step;
+	int		point_dist;
 	t_point	***matrix;
 }	t_map;
 
@@ -70,6 +70,9 @@ typedef struct s_master
 	char	*file_name;
 	t_list	*file_lst;
 	t_map	*map;
+	int		win_width;
+	int		win_height;
+	char	proj[5];
 	t_vars	*mlx;
 	t_data	*data_img;
 }	t_master;
@@ -98,6 +101,8 @@ int				check_size_strstr(char **strstr);
 t_list			*fill_map_lst(t_master *master);
 void			fill_map(t_master *master);
 int				get_width(t_master *master);
+int				get_dist_btwn_cart_point(t_master *master);
+int				get_dist_btwn_iso_point(t_master *master);
 
 // matrix.c
 
@@ -109,6 +114,8 @@ void			fill_matrix(t_master *master);
 
 void			fill_point(t_master *master, int x, int y, char *val);
 void			cart_to_iso(t_master *master, t_point *point);
+int				x_cart_to_iso(int x, int y, int z);
+int				y_cart_to_iso(int x, int y, int z);
 
 // event.c
 

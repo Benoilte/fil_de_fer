@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/06 19:50:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:22:59 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,24 @@ t_list	*fill_map_lst(t_master *master)
 
 void	fill_map(t_master *master)
 {
-	int	step;
+	int	point_dist;
 
 	master->map->height = ft_lstsize(master->file_lst);
 	master->map->width = get_width(master);
 	master->map->matrix = init_matrix(master);
-	master->map->step = 30;
-	step = master->map->step;
-	master->map->cart_height_offset = ((WIN_HEIGHT / 2)
-			- ((master->map->height * step) / 2));
-	master->map->cart_width_offset = ((WIN_WIDTH / 2)
-			- ((master->map->width * step) / 2));
+	// master->map->point_dist = 30;
+	// master->map->cart_point_dist = get_dist_btwn_cart_point(master);
+	// point_dist = master->map->point_dist;
+	// master->map->cart_height_offset = ((WIN_HEIGHT / 2)
+	// 		- ((master->map->height * point_dist) / 2));
+	// master->map->cart_width_offset = ((WIN_WIDTH / 2)
+	// 		- ((master->map->width * point_dist) / 2));
+	// master->map->point_dist = 30;
+	master->map->point_dist = get_dist_btwn_iso_point(master);
+	point_dist = master->map->point_dist;
 	master->map->iso_height_offset = (WIN_HEIGHT / 2)
-		- ((((master->map->width * step) * sin(120))
-				+ ((master->map->height * step) * sin(120 + 2))) / 2);
+		- ((((master->map->width * point_dist) * sin(120))
+				+ ((master->map->height * point_dist) * sin(120 + 2))) / 2);
 	master->map->iso_width_offset = (WIN_WIDTH / 2);
 	fill_matrix(master);
 }
@@ -74,4 +78,44 @@ int	get_width(t_master *master)
 	width = check_size_strstr(coords);
 	free_strstr(coords);
 	return (width);
+}
+
+int	get_dist_btwn_cart_point(t_master *master)
+{
+	int	dist;
+	int	height;
+	int	width;
+
+	height = master->map->height;
+	width = master->map->width;
+	dist = 40;
+	while (((master->win_height / 2) - ((height * dist) / 2))
+		>= master->win_height)
+		dist--;
+	while (((master->win_width / 2) - ((width * dist) / 2))
+		>= master->win_width)
+		dist--;
+	return (dist);
+}
+
+int	get_dist_btwn_iso_point(t_master *master)
+{
+	int	d;
+	int	h;
+	int	w;
+	int	z;
+
+	h = master->map->height;
+	w = master->map->width;
+	z = ((master->map->matrix)[h -1][w - 1])->z;
+	d = 40;
+	while ((y_cart_to_iso(w * d, h * d, z)
+			+ (((WIN_HEIGHT - y_cart_to_iso(w * d, h * d, z)) / 2))
+			>= master->win_height) && d > 1)
+		d--;
+	z = ((master->map->matrix)[0][w - 1])->z;
+	while (((x_cart_to_iso(0, w * d, z)) + (WIN_WIDTH / 2)
+			>= master->win_width) && d > 1)
+		d--;
+	return (d);
 }
