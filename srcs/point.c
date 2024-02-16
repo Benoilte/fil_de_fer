@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:41:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/14 13:44:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:36:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	fill_point(t_master *master, int x, int y, char *val)
 	{
 		z_and_col = ft_split(val, ',');
 		is_malloc_or_exit(master, z_and_col, "Memory allocation, fill_point()");
-		point->z = ft_atoi(*z_and_col) * 3;
+		point->z = ft_atoi(*z_and_col) * master->map->point_dist;
 		cart_to_iso(master, point);
 		ft_strlcpy(point->color, z_and_col[1], 10);
 		free_strstr(z_and_col);
 	}
 	else
 	{
-		point->z = ft_atoi(val) * 3;
+		point->z = ft_atoi(val) * master->map->point_dist;
 		cart_to_iso(master, point);
 	}
 }

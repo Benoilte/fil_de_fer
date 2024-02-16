@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/08 15:40:15 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:21:13 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,22 @@ typedef struct s_point
 	char	color[10];
 }	t_point;
 
-// typedef struct s_line
-// {
-// 	int		x;
-// 	int		y;
-// 	char	color[10];
-// 	t_line	*next;
-// }	t_line;
+typedef struct s_bres
+{
+	int	x1;
+	int	x2;
+	int	y1;
+	int	y2;
+	int	ex;
+	int	ex_abs;
+	int	ey;
+	int	ey_abs;
+	int	dx;
+	int	dy;
+	int	x_rise;
+	int	y_rise;
+	int	i;
+}	t_bres;
 
 typedef struct s_map
 {
@@ -132,11 +141,15 @@ int				key_hook(int key, t_master *master);
 
 // draw.c
 
-void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void			draw_map(t_master *master);
 void			draw_lines(t_master *master, int x, int y);
-void			draw_line(t_data *img, int x1, int x2, int y1, int y2);
-void			ft_swap(int *n1, int *n2);
+void			ft_bresenham(t_data *img, t_point *current, t_point *next);
+void			slope_first_case(t_data *img, t_bres val, int x1, int y1);
+void			slope_second_case(t_data *img, t_bres val, int x1, int y1);
+
+// mlx_utils.c
+
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 // safe_free.c
 

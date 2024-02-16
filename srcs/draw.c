@@ -6,21 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:20:20 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/14 13:43:33 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:20:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x >= WIN_WIDTH || y >= WIN_HEIGHT || x < 0 || y < 0)
-		return ;
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 void	draw_map(t_master *master)
 {
@@ -37,21 +27,12 @@ void	draw_map(t_master *master)
 	master->data_img = img;
 	matrix = master->map->matrix;
 	y = 0;
-	// draw_lines(master, 0, 0);
 	while (matrix[y])
 	{
 		x = 0;
 		while (matrix[y][x])
 		{
 			draw_lines(master, x, y);
-			if ((matrix[y][x])->z != 0)
-				my_mlx_pixel_put(img,
-					(matrix[y][x])->x_iso_dst, (matrix[y][x])->y_iso_dst,
-					0xFF0000);
-			else
-				my_mlx_pixel_put(img,
-					(matrix[y][x])->x_iso_dst, (matrix[y][x])->y_iso_dst,
-					0xFFFF00);
 			x++;
 		}
 		y++;
@@ -71,96 +52,76 @@ void	draw_lines(t_master *master, int x, int y)
 	height = master->map->height;
 	if (x < (width - 1))
 	{
-		draw_line(master->data_img, (matrix[y][x])->x_iso_dst, (matrix[y][x + 1])->x_iso_dst, (matrix[y][x])->y_iso_dst, (matrix[y][x + 1])->y_iso_dst);
+		ft_bresenham(master->data_img, matrix[y][x], matrix[y][x + 1]);
 	}
 	if (y < (height - 1))
 	{
-		draw_line(master->data_img, (matrix[y][x])->x_iso_dst, (matrix[y + 1][x])->x_iso_dst, (matrix[y][x])->y_iso_dst, (matrix[y + 1][x])->y_iso_dst);
+		ft_bresenham(master->data_img, matrix[y][x], matrix[y + 1][x]);
 	}
 }
+
 /*
-Given two points (x1, y1) and (x2, y2) where x1 < x2 and y1 < y2,
-determine the slope of the line m = (y2 - y1) / (x2 - x1).
+m = abs(y2 - y1) / abs(x2 - x1) => m = dy / dx
 
-Initialize variables:
+first case => m < 1 (dx > dy)
 
-dx = x2 - x1 (change in x)
-dy = y2 - y1 (change in y)
-d = 2 * dy - dx (initial decision parameter)
-For each x-coordinate from x1 to x2:
-
-Plot the pixel at coordinates (x, y).
-If the decision parameter d is greater than or equal to 0,
-increment y by 1 and update d = d + 2 * dy.
-Otherwise, keep y the same and update d = d + 2 * dy - 2 * dx.
-Repeat step 3 until the entire line is drawn.
+second case => m > 1 (dx < dy)
 */
-
-void	draw_line(t_data *img, int x1, int x2, int y1, int y2)
+void	ft_bresenham(t_data *img, t_point *current, t_point *next)
 {
-	int	ex;
-	int	ex_abs;
-	int	ey;
-	int	ey_abs;
-	int	dx;
-	int	dy;
-	int x_rise;
-	int y_rise;
-	int i;
+	t_bres	val;
 
-	x_rise = 1;
-	y_rise = 1;
-	if (x1 > x2)
-		x_rise = -1;
-	if (y1 > y2)
-		y_rise = -1;
-	ex = abs(x2 - x1);
-	ex_abs = ex;
-	ey = abs(y2 - y1);
-	ey_abs = ey;
-	dx = 2 * ex;
-	dy = 2 * ey;
-	i = 0;
-	if(ex_abs > ey_abs)
-	{
-		while (i <= ex_abs)
-		{
-			my_mlx_pixel_put(img, x1, y1, 0xFFFFFF);
-			i++;
-			x1 += x_rise;
-			ex -= dy;
-			if (ex < 0)
-			{
-				y1 += y_rise;
-				ex += dx;
-			}
-		}
-	}
+	val.x1 = current->x_iso_dst;
+	val.x2 = next->x_iso_dst;
+	val.y1 = current->y_iso_dst;
+	val.y2 = next->y_iso_dst;
+	val.x_rise = 1;
+	val.y_rise = 1;
+	if (val.x1 > val.x2)
+		val.x_rise = -1;
+	if (val.y1 > val.y2)
+		val.y_rise = -1;
+	val.ex = abs(val.x2 - val.x1);
+	val.ex_abs = val.ex;
+	val.ey = abs(val.y2 - val.y1);
+	val.ey_abs = val.ey;
+	val.dx = 2 * val.ex;
+	val.dy = 2 * val.ey;
+	val.i = 0;
+	if (val.ex_abs > val.ey_abs)
+		slope_first_case(img, val, val.x1, val.y1);
 	else
+		slope_second_case(img, val, val.x1, val.y1);
+}
+
+void	slope_first_case(t_data *img, t_bres val, int x1, int y1)
+{
+	while (val.i <= val.ex_abs)
 	{
-		while (i <= ey_abs)
+		my_mlx_pixel_put(img, x1, y1, 0xFFFFFF);
+		val.i++;
+		x1 += val.x_rise;
+		val.ex -= val.dy;
+		if (val.ex < 0)
 		{
-			my_mlx_pixel_put(img, x1, y1, 0xFFFFFF);
-			i++;
-			y1 += y_rise;
-			ey -= dx;
-			if (ey < 0)
-			{
-				x1 += x_rise;
-				ey += dy;
-			}
+			y1 += val.y_rise;
+			val.ex += val.dx;
 		}
 	}
 }
 
-void	ft_swap(int *n1, int *n2)
+void	slope_second_case(t_data *img, t_bres val, int x1, int y1)
 {
-	int	tmp;
-
-	if (*n1 > *n2)
+	while (val.i <= val.ey_abs)
 	{
-		tmp = *n1;
-		*n1 = *n2;
-		*n2 = tmp;
+		my_mlx_pixel_put(img, x1, y1, 0xFFFFFF);
+		val.i++;
+		y1 += val.y_rise;
+		val.ey -= val.dx;
+		if (val.ey < 0)
+		{
+			x1 += val.x_rise;
+			val.ey += val.dy;
+		}
 	}
 }
