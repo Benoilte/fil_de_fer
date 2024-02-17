@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 11:55:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/21 18:06:04 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/17 17:00:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ and all the following elements
 */
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*next_el;
+	t_list	*to_del;
+	t_list	*next;
 
-	if (!lst)
-		return ;
-	while (*lst)
+	to_del = *lst;
+	*lst = NULL;
+	while (to_del != NULL)
 	{
-		next_el = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next_el;
+		next = to_del->next;
+		(*del)(to_del->content);
+		free(to_del);
+		to_del = next;
 	}
-	free(*lst);
-	*lst = (void *)0;
 }

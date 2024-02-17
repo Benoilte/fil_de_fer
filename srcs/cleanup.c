@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 19:28:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/17 17:02:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	clean(t_master *master)
 {
 	if (master)
 	{
-		if (master->file_lst)
-			ft_lstclear(&(master->file_lst), &del);
+		// if (master->file_lst)
+		// 	ft_lstclear(&(master->file_lst), &del);
 		if (master->map)
 			clean_map(master->map);
 		if (master->mlx)
