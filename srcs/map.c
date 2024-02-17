@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/16 16:40:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:45:58 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ int	get_dist_btwn_cart_point(t_master *master)
 	height = master->map->height;
 	width = master->map->width;
 	dist = 10;
-	while (((master->win_height / 2) - ((height * dist) / 2))
-		>= master->win_height)
+	while (((WIN_HEIGHT / 2) - ((height * dist) / 2))
+		>= WIN_HEIGHT)
 		dist--;
-	while (((master->win_width / 2) - ((width * dist) / 2))
-		>= master->win_width)
+	while (((WIN_WIDTH / 2) - ((width * dist) / 2))
+		>= WIN_WIDTH)
 		dist--;
 	return (dist);
 }
@@ -111,11 +111,11 @@ int	get_dist_btwn_iso_point(t_master *master)
 	d = 20;
 	while ((y_cart_to_iso(w * d, h * d, z * d)
 			+ (((WIN_HEIGHT - y_cart_to_iso(w * d, h * d, z * d)) / 2))
-			>= master->win_height) && d > 1)
+			>= WIN_HEIGHT) && d > 1)
 		d--;
 	z = ((master->map->matrix)[0][w - 1])->z;
 	while (((x_cart_to_iso(0, w * d, z * d)) + (WIN_WIDTH / 2)
-			>= master->win_width) && d > 1)
+			>= WIN_WIDTH) && d > 1)
 		d--;
 	return (d);
 }

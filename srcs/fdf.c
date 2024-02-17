@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/08 15:40:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:57:08 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_master	*master;
-	// int			n1;
-	// int			n2;
-	// int			n3;
-	// int			n4;
 
 	if (argc < 2)
 	{
@@ -42,23 +38,6 @@ int	main(int argc, char **argv)
 		// ft_printf("height: %d\n", master->map->height);
 		// ft_printf("width: %d\n", master->map->width);
 		fdf_run(master);
-		// ft_print_matrix(master->map->matrix);
-		// n1 = 2;
-		// n2 = 1;
-		// n3 = 4;
-		// n4 = 3;
-		// ft_printf("n1 : %d\n", n1);
-		// ft_printf("n2 : %d\n", n2);
-		// ft_printf("n3 : %d\n", n3);
-		// ft_printf("n4 : %d\n", n4);
-		// ft_printf("ptr n4 : %p\n", &n4);
-		// ft_printf("---------------\n");
-		// draw_line(n1, n2, n3, n4);
-		// ft_printf("---------------\n");
-		// ft_printf("n1 : %d\n", n1);
-		// ft_printf("n2 : %d\n", n2);
-		// ft_printf("n3 : %d\n", n3);
-		// ft_printf("n4 : %d\n", n4);
 		clean(master);
 	}
 	return (0);
@@ -75,8 +54,6 @@ void	fill_fdf(t_master *master)
 {
 	t_vars	*mlx;
 
-	master->win_width = 1920;
-	master->win_height = 1080;
 	ft_strlcpy(master->proj, "ISO", 4);
 	fill_map(master);
 	mlx = (t_vars *)malloc(sizeof(t_vars));

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/16 17:21:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:50:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 #  include "../mlx_linux/mlx.h"
 # endif
 
-# define WIN_WIDTH	1920
-# define WIN_HEIGHT	1080
+# define WIN_WIDTH	1440
+# define WIN_HEIGHT	900
 
 typedef struct s_point
 {
@@ -87,8 +87,6 @@ typedef struct s_master
 	char	*file_name;
 	t_list	*file_lst;
 	t_map	*map;
-	int		win_width;
-	int		win_height;
 	char	proj[5];
 	t_vars	*mlx;
 	t_data	*data_img;
