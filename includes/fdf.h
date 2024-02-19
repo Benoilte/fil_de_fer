@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 18:09:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:34:04 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,13 @@ void			draw_lines(t_master *master, int x, int y);
 void			ft_bresenham(t_master *master, t_point *current, t_point *next);
 void			slope_first_case(t_data img, t_bres val, int x1, int y1);
 void			slope_second_case(t_data img, t_bres val, int x1, int y1);
+
+// move.c
+
+void			move_left(t_master *master);
+void			move_up(t_master *master);
+void			move_right(t_master *master);
+void			move_down(t_master *master);
 
 // mlx_utils.c
 
