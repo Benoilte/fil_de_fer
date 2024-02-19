@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/17 17:01:18 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:31:35 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	key_hook(int key, t_master *master)
 
 int	close_mlx(t_master *master)
 {
-	// mlx_destroy_image(master->mlx->mlx_ptr, master->data_img);
-	mlx_destroy_window(master->mlx->mlx_ptr, (master->mlx->win_ptr));
+	// mlx_destroy_image(master->mlx.mlx_ptr, &master->img);
+	mlx_destroy_window(master->mlx.mlx_ptr, (master->mlx.win_ptr));
 	clean_and_exit(master, NULL, 0);
 	return (0);
 }

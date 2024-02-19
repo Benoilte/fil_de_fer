@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 10:16:10 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:17:00 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,17 @@ void	initialization(t_master *master)
 
 void	fill_fdf(t_master *master)
 {
-	t_vars	*mlx;
-
 	ft_strlcpy(master->proj, "ISO", 4);
 	fill_map(master);
-	mlx = (t_vars *)malloc(sizeof(t_vars));
-	is_malloc_or_exit(master, mlx, "Memory allocation, fill_fdf()");
-	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT,
-			master->file_name);
-	master->mlx = mlx;
+	master->mlx.mlx_ptr = mlx_init();
+	master->mlx.win_ptr = mlx_new_window(master->mlx.mlx_ptr, WIN_WIDTH,
+			WIN_HEIGHT, master->file_name);
 }
 
 void	fdf_run(t_master *master)
 {
 	draw_map(master);
-	mlx_key_hook(master->mlx->win_ptr, &key_hook, master);
-	mlx_hook(master->mlx->win_ptr, 17, 1L << 19, &close_mlx, master);
-	mlx_loop(master->mlx->mlx_ptr);
+	mlx_key_hook(master->mlx.win_ptr, &key_hook, master);
+	mlx_hook(master->mlx.win_ptr, 17, 1L << 19, &close_mlx, master);
+	mlx_loop(master->mlx.mlx_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 11:38:52 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:22:21 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ typedef struct s_master
 	t_list	*file_lst;
 	t_map	*map;
 	char	proj[5];
-	t_vars	*mlx;
-	t_data	*data_img;
+	t_vars	mlx;
+	t_data	img;
 }	t_master;
 
 // fdf.c
@@ -166,9 +166,9 @@ int				key_hook(int key, t_master *master);
 
 void			draw_map(t_master *master);
 void			draw_lines(t_master *master, int x, int y);
-void			ft_bresenham(t_data *img, t_point *current, t_point *next);
-void			slope_first_case(t_data *img, t_bres val, int x1, int y1);
-void			slope_second_case(t_data *img, t_bres val, int x1, int y1);
+void			ft_bresenham(t_data img, t_point *current, t_point *next);
+void			slope_first_case(t_data img, t_bres val, int x1, int y1);
+void			slope_second_case(t_data img, t_bres val, int x1, int y1);
 
 // mlx_utils.c
 

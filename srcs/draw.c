@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:20:20 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/17 15:37:38 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:24:01 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 void	draw_map(t_master *master)
 {
-	t_data	*img;
 	int		x;
 	int		y;
 	t_point	***matrix;
 
-	img = (t_data *)malloc(sizeof(img));
-	is_malloc_or_exit(master, img, "Memory allocation, draw_map()");
-	img->img = mlx_new_image(master->mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
-			&img->line_length, &img->endian);
-	master->data_img = img;
+	master->img.img = mlx_new_image(master->mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
+	master->img.addr = mlx_get_data_addr(master->img.img, &master->img.bits_per_pixel,
+			&master->img.line_length, &master->img.endian);
 	matrix = master->map->matrix;
 	y = 0;
 	while (matrix[y])
@@ -37,8 +33,8 @@ void	draw_map(t_master *master)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(master->mlx->mlx_ptr, master->mlx->win_ptr,
-		img->img, 0, 0);
+	mlx_put_image_to_window(master->mlx.mlx_ptr, master->mlx.win_ptr,
+		master->img.img, 0, 0);
 }
 
 void	draw_lines(t_master *master, int x, int y)
@@ -52,11 +48,11 @@ void	draw_lines(t_master *master, int x, int y)
 	height = master->map->height;
 	if (x < (width - 1))
 	{
-		ft_bresenham(master->data_img, matrix[y][x], matrix[y][x + 1]);
+		ft_bresenham(master->img, matrix[y][x], matrix[y][x + 1]);
 	}
 	if (y < (height - 1))
 	{
-		ft_bresenham(master->data_img, matrix[y][x], matrix[y + 1][x]);
+		ft_bresenham(master->img, matrix[y][x], matrix[y + 1][x]);
 	}
 }
 
@@ -67,7 +63,7 @@ first case => m < 1 (dx > dy)
 
 second case => m > 1 (dx < dy)
 */
-void	ft_bresenham(t_data *img, t_point *current, t_point *next)
+void	ft_bresenham(t_data img, t_point *current, t_point *next)
 {
 	t_bres	val;
 
@@ -94,11 +90,11 @@ void	ft_bresenham(t_data *img, t_point *current, t_point *next)
 		slope_second_case(img, val, val.x1, val.y1);
 }
 
-void	slope_first_case(t_data *img, t_bres val, int x1, int y1)
+void	slope_first_case(t_data img, t_bres val, int x1, int y1)
 {
 	while (val.i <= val.ex_abs)
 	{
-		my_mlx_pixel_put(img, x1, y1, 0xFFFFFF);
+		my_mlx_pixel_put(&img, x1, y1, 0xFFFFFF);
 		val.i++;
 		x1 += val.x_rise;
 		val.ex -= val.dy;
@@ -110,11 +106,11 @@ void	slope_first_case(t_data *img, t_bres val, int x1, int y1)
 	}
 }
 
-void	slope_second_case(t_data *img, t_bres val, int x1, int y1)
+void	slope_second_case(t_data img, t_bres val, int x1, int y1)
 {
 	while (val.i <= val.ey_abs)
 	{
-		my_mlx_pixel_put(img, x1, y1, 0xFFFFFF);
+		my_mlx_pixel_put(&img, x1, y1, 0xFFFFFF);
 		val.i++;
 		y1 += val.y_rise;
 		val.ey -= val.dx;
