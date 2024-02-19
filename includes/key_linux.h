@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:05:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/04 10:50:17 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:50:54 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@
 # define MAIN_PAD_w			119
 # define MAIN_PAD_s			115
 # define MAIN_PAD_d			100
+# define MAIN_PAD_u			117
 
 #endif
