@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 17:16:28 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:09:49 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ int				get_dist_btwn_iso_point(t_master *master);
 
 void				get_x_offset(t_master *master);
 void				get_y_offset(t_master *master);
+void				update_size(t_master *master);
 
 // matrix.c
 

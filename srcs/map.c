@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 17:04:39 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:24:15 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	fill_map(t_master *master)
 	fill_matrix(master);
 	get_x_offset(master);
 	get_y_offset(master);
+	update_size(master);
 }
 
 int	get_width(t_master *master)
