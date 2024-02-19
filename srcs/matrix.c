@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 16:03:08 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:14:08 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,25 @@ void	fill_matrix(t_master *master)
 		}
 		free_strstr(val_tab);
 		tmp = tmp->next;
+		y++;
+	}
+}
+
+void	update_matrix(t_master *master)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while ((master->map->matrix)[y])
+	{
+		x = 0;
+		while ((master->map->matrix)[y][x])
+		{
+			update_point(master, x, y);
+			get_min_max(master, (master->map->matrix)[y][x]);
+			x++;
+		}
 		y++;
 	}
 }

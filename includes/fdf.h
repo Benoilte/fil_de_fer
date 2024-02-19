@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 15:28:51 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:16:28 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_point
 	int		z;
 	int		x_iso_dst;
 	int		y_iso_dst;
+	int		z_iso;
 	char	color[10];
 }	t_point;
 
@@ -139,16 +140,23 @@ int				get_width(t_master *master);
 int				get_dist_btwn_cart_point(t_master *master);
 int				get_dist_btwn_iso_point(t_master *master);
 
+// map_utils.c
+
+void				get_x_offset(t_master *master);
+void				get_y_offset(t_master *master);
+
 // matrix.c
 
 t_point			***init_matrix(t_master *master);
 void			init_width_matrix(t_master *master, t_point **matrix);
 void			fill_matrix(t_master *master);
+void			update_matrix(t_master *master);
 void			get_min_max(t_master *master, t_point *point);
 
 // point.c
 
 void			fill_point(t_master *master, int x, int y, char *val);
+void			update_point(t_master *master, int x, int y);
 void			cart_to_iso(t_master *master, t_point *point);
 int				x_cart_to_iso(int x, int y, int z);
 int				y_cart_to_iso(int x, int y, int z);

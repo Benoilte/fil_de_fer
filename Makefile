@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2024/02/16 17:22:05 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/02/19 17:01:27 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS_DIR	=	srcs/
 
 FDF_SRCS	=	fdf.c input_validation.c init_struct.c map.c matrix.c point.c \
 				event.c draw.c mlx_utils.c safe_free.c check_malloc.c \
-				cleanup.c test_function.c
+				cleanup.c test_function.c map_utils.c
 
 FDF_OBJ 	= $(FDF_SRCS:.c=.o)
 

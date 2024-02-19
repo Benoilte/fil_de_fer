@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 16:34:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:04:39 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,10 @@ void	fill_map(t_master *master)
 	master->map->cart->size = get_dist_btwn_cart_point(master);
 	master->map->iso->size = get_dist_btwn_iso_point(master);
 	size = master->map->iso->size;
-	master->map->iso->z_fact = master->map->iso->size;
-	master->map->iso->y_offset = (WIN_HEIGHT / 2)
-		- ((((master->map->width * size) * sin(120))
-				+ ((master->map->height * size) * sin(120 + 2))) / 2);
-	master->map->iso->x_offset = (WIN_WIDTH / 2);
+	master->map->iso->z_fact = size;
 	fill_matrix(master);
-	master->map->iso->y_offset = ((WIN_HEIGHT / 2) - master->map->iso->y_min) - ((master->map->iso->y_max - master->map->iso->y_min) / 2);
-	master->map->iso->x_offset = ((WIN_WIDTH / 2) - master->map->iso->x_min) - ((master->map->iso->x_max - master->map->iso->x_min) / 2);
+	get_x_offset(master);
+	get_y_offset(master);
 }
 
 int	get_width(t_master *master)

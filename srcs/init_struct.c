@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 15:51:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:54:56 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,21 @@ void	init_t_iso(t_iso *iso)
 	iso->x_offset = 0;
 	iso->y_offset = 0;
 	iso->size = 0;
+}
+
+void	update_t_cart(t_cart *cart)
+{
+	cart->x_max = 0;
+	cart->x_min = WIN_WIDTH;
+	cart->y_max = 0;
+	cart->y_min = WIN_HEIGHT;
+}
+
+void	update_t_iso(t_iso *iso)
+{
+	iso->x_max = 0;
+	iso->x_min = WIN_WIDTH;
+	iso->y_max = 0;
+	iso->y_min = WIN_HEIGHT;
+	iso->z_fact = 0;
 }
