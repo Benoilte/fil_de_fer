@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 11:49:57 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:34:49 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,22 @@ t_list	*fill_map_lst(t_master *master)
 
 void	fill_map(t_master *master)
 {
-	int	point_dist;
+	int	size;
 
 	master->map->height = ft_lstsize(master->file_lst);
 	master->map->width = get_width(master);
 	master->map->matrix = init_matrix(master);
-	master->map->point_dist = get_dist_btwn_iso_point(master);
-	point_dist = master->map->point_dist;
-	master->map->iso_height_offset = (WIN_HEIGHT / 2)
-		- ((((master->map->width * point_dist) * sin(120))
-				+ ((master->map->height * point_dist) * sin(120 + 2))) / 2);
-	master->map->iso_width_offset = (WIN_WIDTH / 2);
+	master->map->cart->size = get_dist_btwn_cart_point(master);
+	master->map->iso->size = get_dist_btwn_iso_point(master);
+	size = master->map->iso->size;
+	master->map->iso->z_fact = master->map->iso->size;
+	master->map->iso->y_offset = (WIN_HEIGHT / 2)
+		- ((((master->map->width * size) * sin(120))
+				+ ((master->map->height * size) * sin(120 + 2))) / 2);
+	master->map->iso->x_offset = (WIN_WIDTH / 2);
 	fill_matrix(master);
+	master->map->iso->y_offset = ((WIN_HEIGHT / 2) - master->map->iso->y_min) - ((master->map->iso->y_max - master->map->iso->y_min) / 2);
+	master->map->iso->x_offset = ((WIN_WIDTH / 2) - master->map->iso->x_min) - ((master->map->iso->x_max - master->map->iso->x_min) / 2);
 }
 
 int	get_width(t_master *master)
@@ -80,7 +84,7 @@ int	get_dist_btwn_cart_point(t_master *master)
 
 	height = master->map->height;
 	width = master->map->width;
-	dist = 20;
+	dist = 30;
 	while (((WIN_HEIGHT / 2) - ((height * dist) / 2))
 		>= WIN_HEIGHT)
 		dist--;
@@ -100,7 +104,7 @@ int	get_dist_btwn_iso_point(t_master *master)
 	h = master->map->height;
 	w = master->map->width;
 	z = ((master->map->matrix)[h -1][w - 1])->z;
-	d = 20;
+	d = 30;
 	while ((y_cart_to_iso(w * d, h * d, z * d)
 			+ (((WIN_HEIGHT - y_cart_to_iso(w * d, h * d, z * d)) / 2))
 			>= WIN_HEIGHT) && d > 1)

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 13:22:21 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:28:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_cart
 	int	y_min;
 	int	x_offset;
 	int	y_offset;
-	int	dist;
+	int	size;
 }	t_cart;
 
 typedef struct s_iso
@@ -45,12 +45,10 @@ typedef struct s_iso
 	int	x_min;
 	int	y_max;
 	int	y_min;
-	int	z_max;
-	int	z_min;
 	int	z_fact;
 	int	x_offset;
 	int	y_offset;
-	int	dist;
+	int	size;
 }	t_iso;
 
 typedef struct s_point
@@ -84,11 +82,6 @@ typedef struct s_map
 {
 	int		height;
 	int		width;
-	int		cart_width_offset;
-	int		cart_height_offset;
-	int		iso_width_offset;
-	int		iso_height_offset;
-	int		point_dist;
 	t_cart	*cart;
 	t_iso	*iso;
 	t_point	***matrix;
@@ -128,6 +121,8 @@ void			fdf_run(t_master *master);
 t_master		*init_master(char *file);
 t_map			*init_map(t_master *master);
 t_point			*init_point(t_master *master);
+void			init_t_cart(t_cart *cart);
+void			init_t_iso(t_iso *iso);
 
 // input_validation.c
 
@@ -149,6 +144,7 @@ int				get_dist_btwn_iso_point(t_master *master);
 t_point			***init_matrix(t_master *master);
 void			init_width_matrix(t_master *master, t_point **matrix);
 void			fill_matrix(t_master *master);
+void			get_min_max(t_master *master, t_point *point);
 
 // point.c
 
@@ -166,7 +162,7 @@ int				key_hook(int key, t_master *master);
 
 void			draw_map(t_master *master);
 void			draw_lines(t_master *master, int x, int y);
-void			ft_bresenham(t_data img, t_point *current, t_point *next);
+void			ft_bresenham(t_master *master, t_point *current, t_point *next);
 void			slope_first_case(t_data img, t_bres val, int x1, int y1);
 void			slope_second_case(t_data img, t_bres val, int x1, int y1);
 

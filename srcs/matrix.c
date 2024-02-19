@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/06 17:00:44 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:03:08 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,23 @@ void	fill_matrix(t_master *master)
 		while ((master->map->matrix)[y][x])
 		{
 			fill_point(master, x, y, val_tab[x]);
+			get_min_max(master, (master->map->matrix)[y][x]);
 			x++;
 		}
 		free_strstr(val_tab);
 		tmp = tmp->next;
 		y++;
 	}
+}
+
+void	get_min_max(t_master *master, t_point *point)
+{
+	if (point->x_iso_dst > master->map->iso->x_max)
+		master->map->iso->x_max = point->x_iso_dst;
+	else if (point->x_iso_dst < master->map->iso->x_min)
+		master->map->iso->x_min = point->x_iso_dst;
+	if (point->y_iso_dst > master->map->iso->y_max)
+		master->map->iso->y_max = point->y_iso_dst;
+	else if (point->y_iso_dst < master->map->iso->y_min)
+		master->map->iso->y_min = point->y_iso_dst;
 }

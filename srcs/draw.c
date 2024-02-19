@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:20:20 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 13:24:01 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:10:33 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	draw_lines(t_master *master, int x, int y)
 	height = master->map->height;
 	if (x < (width - 1))
 	{
-		ft_bresenham(master->img, matrix[y][x], matrix[y][x + 1]);
+		ft_bresenham(master, matrix[y][x], matrix[y][x + 1]);
 	}
 	if (y < (height - 1))
 	{
-		ft_bresenham(master->img, matrix[y][x], matrix[y + 1][x]);
+		ft_bresenham(master, matrix[y][x], matrix[y + 1][x]);
 	}
 }
 
@@ -63,14 +63,14 @@ first case => m < 1 (dx > dy)
 
 second case => m > 1 (dx < dy)
 */
-void	ft_bresenham(t_data img, t_point *current, t_point *next)
+void	ft_bresenham(t_master *master, t_point *current, t_point *next)
 {
 	t_bres	val;
 
-	val.x1 = current->x_iso_dst;
-	val.x2 = next->x_iso_dst;
-	val.y1 = current->y_iso_dst;
-	val.y2 = next->y_iso_dst;
+	val.x1 = current->x_iso_dst + master->map->iso->x_offset;
+	val.x2 = next->x_iso_dst + master->map->iso->x_offset;
+	val.y1 = current->y_iso_dst + master->map->iso->y_offset;
+	val.y2 = next->y_iso_dst + master->map->iso->y_offset;
 	val.x_rise = 1;
 	val.y_rise = 1;
 	if (val.x1 > val.x2)
@@ -85,9 +85,9 @@ void	ft_bresenham(t_data img, t_point *current, t_point *next)
 	val.dy = 2 * val.ey;
 	val.i = 0;
 	if (val.ex_abs > val.ey_abs)
-		slope_first_case(img, val, val.x1, val.y1);
+		slope_first_case(master->img, val, val.x1, val.y1);
 	else
-		slope_second_case(img, val, val.x1, val.y1);
+		slope_second_case(master->img, val, val.x1, val.y1);
 }
 
 void	slope_first_case(t_data img, t_bres val, int x1, int y1)
