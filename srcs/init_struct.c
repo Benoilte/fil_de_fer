@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 15:29:04 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:43:35 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,13 @@ t_map	*init_map(t_master *master)
 
 	map = (t_map *)malloc(1 * sizeof(t_map));
 	is_malloc_or_exit(master, map, "Memory allocation, init_map()");
+	map->cart = NULL;
+	map->iso = NULL;
 	map->matrix = NULL;
+	map->cart = (t_cart *)malloc(1 * sizeof(t_cart));
+	is_malloc_or_exit(master, map->cart, "Memory allocation, init_map->cart()");
+	map->iso = (t_iso *)malloc(1 * sizeof(t_iso));
+	is_malloc_or_exit(master, map->iso, "Memory allocation, init_map->iso()");
 	return (map);
 }
 

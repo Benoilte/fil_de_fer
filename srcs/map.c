@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/16 17:45:58 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:51:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	get_dist_btwn_cart_point(t_master *master)
 
 	height = master->map->height;
 	width = master->map->width;
-	dist = 10;
+	dist = 20;
 	while (((WIN_HEIGHT / 2) - ((height * dist) / 2))
 		>= WIN_HEIGHT)
 		dist--;

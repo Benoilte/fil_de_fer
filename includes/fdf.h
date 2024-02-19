@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/16 17:50:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:38:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,31 @@
 
 # define WIN_WIDTH	1440
 # define WIN_HEIGHT	900
+
+typedef struct s_cart
+{
+	int	x_max;
+	int	x_min;
+	int	y_max;
+	int	y_min;
+	int	x_offset;
+	int	y_offset;
+	int	dist;
+}	t_cart;
+
+typedef struct s_iso
+{
+	int	x_max;
+	int	x_min;
+	int	y_max;
+	int	y_min;
+	int	z_max;
+	int	z_min;
+	int	z_fact;
+	int	x_offset;
+	int	y_offset;
+	int	dist;
+}	t_iso;
 
 typedef struct s_point
 {
@@ -59,13 +84,13 @@ typedef struct s_map
 {
 	int		height;
 	int		width;
-	int		z_max;
-	int		z_min;
 	int		cart_width_offset;
 	int		cart_height_offset;
 	int		iso_width_offset;
 	int		iso_height_offset;
 	int		point_dist;
+	t_cart	*cart;
+	t_iso	*iso;
 	t_point	***matrix;
 }	t_map;
 

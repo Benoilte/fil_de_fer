@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/16 17:57:08 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:16:10 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 void	initialization(t_master *master)
 {
 	master->file_lst = fill_map_lst(master);
-	display_struct(master->file_lst);
+	// display_struct(master->file_lst);
 	master->map = init_map(master);
 }
 
