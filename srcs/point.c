@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:41:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 11:52:35 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:15:54 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,27 @@ void	update_point(t_master *master, int x, int y)
 	point->x = (x * master->map->iso->size * master->map->zoom);
 	point->y = (y * master->map->iso->size * master->map->zoom);
 	point->z_iso = point->z * master->map->iso->z_fact * master->map->zoom;
+	cart_to_iso(master, point);
+}
+
+void	rotate_point(t_master *master, int x, int y, int angle)
+{
+	t_point	*point;
+	// int		x_orig;
+	// int		x_pos;
+	// double	vec_size;
+	// double	x_angle;
+	int		new_y;
+	int		new_z;
+	// int		vector_size;
+
+	point = (master->map->matrix)[y][x];
+	// vec_size = sqrt(pow())
+	// x_orig = ((master->map->matrix)[0][0])->x_iso_dst;
+	new_y = (point->y_iso_dst * cos(angle)) - (point->z_iso * sin(angle));
+	new_z = (point->y_iso_dst * sin(angle)) + (point->z_iso * cos(angle));
+	point->y_iso_dst = new_y;
+	point->z_iso = new_z;
 	cart_to_iso(master, point);
 }
 

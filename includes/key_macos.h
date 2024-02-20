@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:04:32 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 10:37:52 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:37:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,9 @@
 # define MAIN_PAD_I			34
 # define MAIN_PAD_O			31
 # define MAIN_PAD_R			15
+# define MAIN_PAD_W			13
+# define MAIN_PAD_A		    0
+# define MAIN_PAD_S			1
+# define MAIN_PAD_D			2
 
 #endif

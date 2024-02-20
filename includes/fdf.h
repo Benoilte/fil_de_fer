@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 12:55:02 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:42:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ void			get_min_max(t_master *master, t_point *point);
 
 void			fill_point(t_master *master, int x, int y, char *val);
 void			update_point(t_master *master, int x, int y);
+void			rotate_point(t_master *master, int x, int y, int angle);
 void			cart_to_iso(t_master *master, t_point *point);
 int				x_cart_to_iso(int x, int y, int z);
 int				y_cart_to_iso(int x, int y, int z);
@@ -194,6 +195,10 @@ void			level_down(t_master *master);
 
 void			zoom_in(int key_code, t_master *master);
 void			zoom_out(int key_code, t_master *master);
+
+// rotate.c
+
+void			rotate(t_master *master, int angle);
 
 // mlx_utils.c
 
