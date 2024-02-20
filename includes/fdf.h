@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 12:46:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:55:02 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ void			move_left(t_master *master);
 void			move_up(t_master *master);
 void			move_right(t_master *master);
 void			move_down(t_master *master);
+void			reset_map(t_master *master);
 
 // level.c
 

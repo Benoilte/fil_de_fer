@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 12:48:06 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:07:59 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	key_hook(int key, t_master *master)
 		zoom_in(key, master);
 	else if (key == MAIN_PAD_O)
 		zoom_out(key, master);
-	// else if (key == MAIN_PAD_R)
-	// 	reset(master);
+	else if (key == MAIN_PAD_R)
+		reset_map(master);
 	return (0);
 }
 

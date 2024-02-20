@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 18:24:15 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:04:49 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,12 @@ t_list	*fill_map_lst(t_master *master)
 
 void	fill_map(t_master *master)
 {
-	int	size;
-
 	master->map->height = ft_lstsize(master->file_lst);
 	master->map->width = get_width(master);
 	master->map->matrix = init_matrix(master);
 	master->map->cart->size = get_dist_btwn_cart_point(master);
 	master->map->iso->size = get_dist_btwn_iso_point(master);
-	size = master->map->iso->size;
-	master->map->iso->z_fact = size;
+	master->map->iso->z_fact = master->map->iso->size;
 	fill_matrix(master);
 	get_x_offset(master);
 	get_y_offset(master);
