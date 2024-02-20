@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 18:47:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:46:48 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_map
 {
 	int		height;
 	int		width;
+	float	zoom;
 	t_cart	*cart;
 	t_iso	*iso;
 	t_point	***matrix;
@@ -166,6 +167,7 @@ int				y_cart_to_iso(int x, int y, int z);
 
 int				close_mlx(t_master *master);
 int				key_hook(int key, t_master *master);
+int				mouse_hook(int button, int x, int y, t_master *master);
 
 // draw.c
 
@@ -186,6 +188,11 @@ void			move_down(t_master *master);
 
 void			level_up(t_master *master);
 void			level_down(t_master *master);
+
+// zoom.c
+
+void			zoom_in(int key_code, t_master *master);
+void			zoom_out(int key_code, t_master *master);
 
 // mlx_utils.c
 

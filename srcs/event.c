@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 10:00:55 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:48:06 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,28 @@ int	key_hook(int key, t_master *master)
 		move_right(master);
 	else if (key == ARROW_DOWN)
 		move_down(master);
-	else if (key == MAIN_PAD_u)
+	else if (key == MAIN_PAD_PLUS || key == NUM_PAD_PLUS)
 		level_up(master);
-	else if (key == MAIN_PAD_d)
+	else if (key == MAIN_PAD_MINUS || key == NUM_PAD_MINUS)
 		level_down(master);
+	else if (key == MAIN_PAD_I)
+		zoom_in(key, master);
+	else if (key == MAIN_PAD_O)
+		zoom_out(key, master);
+	// else if (key == MAIN_PAD_R)
+	// 	reset(master);
+	return (0);
+}
+
+int	mouse_hook(int button, int x, int y, t_master *master)
+{
+
+	(void)x;
+	(void)y;
+	if (button == MOUSE_SCROLL_DOWN)
+		zoom_in(button, master);
+	else if (button == MOUSE_SCROLL_UP)
+		zoom_out(button, master);
 	return (0);
 }
 

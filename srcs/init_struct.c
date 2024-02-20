@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 16:54:56 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:57:44 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_map	*init_map(t_master *master)
 	map->cart = NULL;
 	map->iso = NULL;
 	map->matrix = NULL;
+	map->zoom = 1;
 	map->cart = (t_cart *)malloc(1 * sizeof(t_cart));
 	is_malloc_or_exit(master, map->cart, "Memory allocation, init_map->cart()");
 	init_t_cart(map->cart);

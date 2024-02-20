@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:41:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 17:15:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:52:35 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	update_point(t_master *master, int x, int y)
 	t_point	*point;
 
 	point = (master->map->matrix)[y][x];
-	point->x = (x * master->map->iso->size);
-	point->y = (y * master->map->iso->size);
-	point->z_iso = point->z * master->map->iso->z_fact;
+	point->x = (x * master->map->iso->size * master->map->zoom);
+	point->y = (y * master->map->iso->size * master->map->zoom);
+	point->z_iso = point->z * master->map->iso->z_fact * master->map->zoom;
 	cart_to_iso(master, point);
 }
 

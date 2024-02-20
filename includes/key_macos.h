@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:04:32 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 09:47:14 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:37:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@
 # define NUM_PAD_PLUS		69
 # define NUM_PAD_MINUS		78
 
+
 # define MAIN_PAD_ESC		53
-# define MAIN_PAD_I			34
-# define MAIN_PAD_P			35
 # define MAIN_PAD_0			29
 # define MAIN_PAD_1			18
 # define MAIN_PAD_2			19
@@ -56,7 +55,10 @@
 # define MAIN_PAD_MINUS		27
 # define MAIN_PAD_LESS		43
 # define MAIN_PAD_MORE		47
-# define MAIN_PAD_d			2
-# define MAIN_PAD_u			32
+# define MAIN_PAD_D			2
+# define MAIN_PAD_U			32
+# define MAIN_PAD_I			34
+# define MAIN_PAD_O			31
+# define MAIN_PAD_R			15
 
 #endif

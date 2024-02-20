@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 18:14:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:50:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,6 @@ int	main(int argc, char **argv)
 		initialization(master);
 		check_file_empty(master);
 		fill_fdf(master);
-		// ft_printf("x_max = %d\n", master->map->iso->x_max);
-		// ft_printf("x_min = %d\n", master->map->iso->x_min);
-		// ft_printf("x_offset = %d\n", master->map->iso->x_offset);
-		// ft_printf("y_max = %d\n", master->map->iso->y_max);
-		// ft_printf("y_min = %d\n", master->map->iso->y_min);
-		// ft_printf("y_offset = %d\n", master->map->iso->y_offset);
-		// ft_printf("y_max - y_min = %d\n", master->map->iso->y_max - master->map->iso->y_min);
-		// ft_printf("WIN_HEIGHT / 2  - y_min = %d\n", (WIN_HEIGHT / 2) - master->map->iso->y_min);
 		fdf_run(master);
 		clean(master);
 	}
@@ -67,6 +59,7 @@ void	fdf_run(t_master *master)
 {
 	draw_map(master);
 	mlx_key_hook(master->mlx.win_ptr, &key_hook, master);
+	mlx_mouse_hook (master->mlx.win_ptr, &mouse_hook, master);
 	mlx_hook(master->mlx.win_ptr, 17, 1L << 19, &close_mlx, master);
 	mlx_loop(master->mlx.mlx_ptr);
 }
