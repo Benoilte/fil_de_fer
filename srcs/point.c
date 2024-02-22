@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:41:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/22 11:03:54 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:46:48 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,20 @@ void	cart_to_iso(t_master *master, t_point *point)
 
 int	x_cart_to_iso(int x, int y, int z)
 {
-	return (x * cos(120) + y * cos(120 + 2) + z * cos(120 - 2));
+	double angle;
+	double offset;
+
+	angle = 30 * (M_PI / 180);
+	offset = 120 * (M_PI / 180);
+	return (x * cos(angle) + y * cos(angle + offset) + z * cos(angle - offset));
 }
 
 int	y_cart_to_iso(int x, int y, int z)
 {
-	return (x * sin(120) + y * sin(120 + 2) + z * sin(120 - 2));
+	double angle;
+	double offset;
+
+	angle = 30 * (M_PI / 180);
+	offset = 120 * (M_PI / 180);
+	return (x * sin(angle) + y * sin(angle + offset) + z * sin(angle - offset));
 }

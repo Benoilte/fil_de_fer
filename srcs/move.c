@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 18:32:34 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/22 11:08:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:33:44 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	move_down(t_master *master)
 void	reset_map(t_master *master)
 {
 	mlx_destroy_image(master->mlx.mlx_ptr, master->img.img);
-	master->map->iso->size = get_dist_btwn_iso_point(master);
+	master->map->iso->size = 30;
 	master->map->iso->z_fact = master->map->iso->size;
 	master->map->zoom = 1;
 	master->map->rot_x = 0;

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:01:01 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 18:23:44 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:41:11 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,20 @@ void	get_y_offset(t_master *master)
 void	update_size(t_master *master)
 {
 	while ((master->map->iso->x_max + master->map->iso->x_offset > WIN_WIDTH
-			|| master->map->iso->x_min + master->map->iso->x_offset < 0
-			|| master->map->iso->y_max + master->map->iso->y_offset > WIN_HEIGHT
-			|| master->map->iso->y_min + master->map->iso->y_offset < 0)
+			|| master->map->iso->x_min + master->map->iso->x_offset < 0)
 		&& master->map->iso->size > 1)
 	{
 		master->map->iso->x_max = 0;
 		master->map->iso->x_min = WIN_WIDTH;
+		master->map->iso->size--;
+		update_matrix(master);
+		get_x_offset(master);
+		get_y_offset(master);
+	}
+	while ((master->map->iso->y_max + master->map->iso->y_offset > WIN_HEIGHT
+			|| master->map->iso->y_min + master->map->iso->y_offset < 0)
+		&& master->map->iso->z_fact > 0)
+	{
 		master->map->iso->y_max = 0;
 		master->map->iso->y_min = WIN_HEIGHT;
 		master->map->iso->z_fact--;

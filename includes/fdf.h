@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/22 11:03:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:32:06 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <math.h>
 
 # include "../libft/includes/libft.h"
+# include "color.h"
 
 # ifdef MACOS
 #  include "../mlx_macos/mlx.h"
@@ -25,8 +26,13 @@
 #  include "../mlx_linux/mlx.h"
 # endif
 
-# define WIN_WIDTH	1440
-# define WIN_HEIGHT	900
+# ifndef WIN_WIDTH
+#  define WIN_WIDTH		1440
+# endif
+
+# ifndef WIN_HEIGHT
+#  define WIN_HEIGHT	900
+# endif
 
 typedef struct s_cart
 {
@@ -142,7 +148,6 @@ t_list			*fill_map_lst(t_master *master);
 void			fill_map(t_master *master);
 int				get_width(t_master *master);
 int				get_dist_btwn_cart_point(t_master *master);
-int				get_dist_btwn_iso_point(t_master *master);
 
 // map_utils.c
 
