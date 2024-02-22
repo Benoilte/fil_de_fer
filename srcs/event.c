@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 16:10:57 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:00:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,25 @@ int	key_hook(int key, t_master *master)
 		zoom_in(key, master);
 	else if (key == MAIN_PAD_O)
 		zoom_out(key, master);
-	else if (key == MAIN_PAD_D)
-		rotate(master, 90);
+	else
+		key_hook_next(key, master);
+	return (0);
+}
+
+int	key_hook_next(int key, t_master *master)
+{
+	if (key == MAIN_PAD_D)
+		rotate(master, 'x', 3.6);
 	else if (key == MAIN_PAD_A)
-		rotate(master, -90);
+		rotate(master, 'x', -3.6);
+	if (key == MAIN_PAD_W)
+		rotate(master, 'y', 3.6);
+	else if (key == MAIN_PAD_S)
+		rotate(master, 'y', -3.6);
+	if (key == MAIN_PAD_X)
+		rotate(master, 'z', 3.6);
+	else if (key == MAIN_PAD_Y || key == MAIN_PAD_Z)
+		rotate(master, 'z', -3.6);
 	else if (key == MAIN_PAD_R)
 		reset_map(master);
 	return (0);
@@ -43,7 +58,6 @@ int	key_hook(int key, t_master *master)
 
 int	mouse_hook(int button, int x, int y, t_master *master)
 {
-
 	(void)x;
 	(void)y;
 	if (button == MOUSE_SCROLL_DOWN)

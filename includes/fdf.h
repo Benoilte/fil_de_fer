@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 14:42:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:03:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ typedef struct s_map
 	int		height;
 	int		width;
 	float	zoom;
+	double	rot_x;
+	double	rot_y;
+	double	rot_z;
 	t_cart	*cart;
 	t_iso	*iso;
 	t_point	***matrix;
@@ -143,9 +146,9 @@ int				get_dist_btwn_iso_point(t_master *master);
 
 // map_utils.c
 
-void				get_x_offset(t_master *master);
-void				get_y_offset(t_master *master);
-void				update_size(t_master *master);
+void			get_x_offset(t_master *master);
+void			get_y_offset(t_master *master);
+void			update_size(t_master *master);
 
 // matrix.c
 
@@ -159,16 +162,16 @@ void			get_min_max(t_master *master, t_point *point);
 
 void			fill_point(t_master *master, int x, int y, char *val);
 void			update_point(t_master *master, int x, int y);
-void			rotate_point(t_master *master, int x, int y, int angle);
 void			cart_to_iso(t_master *master, t_point *point);
 int				x_cart_to_iso(int x, int y, int z);
 int				y_cart_to_iso(int x, int y, int z);
 
 // event.c
 
-int				close_mlx(t_master *master);
 int				key_hook(int key, t_master *master);
+int				key_hook_next(int key, t_master *master);
 int				mouse_hook(int button, int x, int y, t_master *master);
+int				close_mlx(t_master *master);
 
 // draw.c
 
@@ -198,7 +201,10 @@ void			zoom_out(int key_code, t_master *master);
 
 // rotate.c
 
-void			rotate(t_master *master, int angle);
+void			rotate(t_master *master, char axis, double angle);
+void			rotate_x(t_master *master, int x, int y);
+void			rotate_y(t_master *master, int x, int y);
+void			rotate_z(t_master *master, int x, int y);
 
 // mlx_utils.c
 

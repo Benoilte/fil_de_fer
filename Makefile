@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 11:59:35 by bebrandt          #+#    #+#              #
-#    Updated: 2024/02/20 14:42:03 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/02/20 22:25:16 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ NONE		=	\033[0m
 all: $(MLX_LIB) $(LIBFT_DIR)$(LIBFT_NAME) $(NAME)
 
 $(NAME): $(FDF_OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT_DIR) -lft $(MLX_FLAGS)
+	$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT_DIR) -lft $(MLX_FLAGS) -lm
 
 $(LIBFT_DIR)$(LIBFT_NAME):
 	@make -C $(LIBFT_DIR)

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:05:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 18:21:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:58:53 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # define MOUSE_LEFT_BUTTON	1
 # define MOUSE_RIGHT_BUTTON	2
-# define MOUSE_THIRD_BUTTON
-# define MOUSE_SCROLL_UP
-# define MOUSE_SCROLL_DOWN
-# define MOUSE_SCROLL_LEFT
-# define MOUSE_SCROLL_RIGHT
+# define MOUSE_THIRD_BUTTON	3
+# define MOUSE_SCROLL_UP	4
+# define MOUSE_SCROLL_DOWN	5
+# define MOUSE_SCROLL_LEFT	6
+# define MOUSE_SCROLL_RIGHT	7
 
 # define ARROW_UP			65362
 # define ARROW_DOWN			65364
@@ -60,5 +60,7 @@
 # define MAIN_PAD_A		    97
 # define MAIN_PAD_S			115
 # define MAIN_PAD_D			100
-
+# define MAIN_PAD_X			120
+# define MAIN_PAD_Y			121
+# define MAIN_PAD_Z			122
 #endif
