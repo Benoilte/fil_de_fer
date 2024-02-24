@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/22 15:32:06 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 14:23:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,30 @@ typedef struct s_point
 
 typedef struct s_bres
 {
-	int	x1;
-	int	x2;
-	int	y1;
-	int	y2;
-	int	ex;
-	int	ex_abs;
-	int	ey;
-	int	ey_abs;
-	int	dx;
-	int	dy;
-	int	x_rise;
-	int	y_rise;
-	int	i;
+	double	x1;
+	double	x2;
+	double	y1;
+	double	y2;
+	double	ex;
+	double	ex_abs;
+	double	ey;
+	double	ey_abs;
+	double	dx;
+	double	dy;
+	double	x_rise;
+	double	y_rise;
+	double	i;
 }	t_bres;
+
+typedef struct s_color
+{
+	unsigned char	r1;
+	unsigned char	r2;
+	unsigned char	g1;
+	unsigned char	g2;
+	unsigned char	b1;
+	unsigned char	b2;
+}	t_color;
 
 typedef struct s_map
 {
@@ -183,8 +193,13 @@ int				close_mlx(t_master *master);
 void			draw_map(t_master *master);
 void			draw_lines(t_master *master, int x, int y);
 void			ft_bresenham(t_master *master, t_point *current, t_point *next);
-void			slope_first_case(t_data img, t_bres val, int x1, int y1);
-void			slope_second_case(t_data img, t_bres val, int x1, int y1);
+void			slope_first_case(t_data img, t_bres val, double x1, double y1);
+void			slope_second_case(t_data img, t_bres val, double x1, double y1);
+
+// color.h
+
+int				get_color(int color1, int color2, float fraction);
+double			get_perc(double start, double end, double size);
 
 // move.c
 
