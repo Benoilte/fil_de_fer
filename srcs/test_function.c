@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:05:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/03 13:48:06 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:55:24 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_print_matrix(t_point ***matrix)
 {
 	int	y;
-	int x;
+	int	x;
 
 	y = 0;
 	ft_printf("\n------ This is the Matrix --------\n\n");
