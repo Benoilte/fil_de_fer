@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/22 13:43:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:25:33 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_map	*init_map(t_master *master)
 	map->cart = NULL;
 	map->iso = NULL;
 	map->matrix = NULL;
+	map->color_is_set = 0;
 	map->zoom = 1;
 	map->rot_x = 0;
 	map->rot_y = 0;
@@ -61,6 +62,8 @@ void	init_t_cart(t_cart *cart)
 	cart->x_min = WIN_WIDTH;
 	cart->y_max = 0;
 	cart->y_min = WIN_HEIGHT;
+	cart->z_max = 0;
+	cart->z_min = 0;
 	cart->x_offset = 0;
 	cart->y_offset = 0;
 	cart->size = 0;
@@ -72,6 +75,8 @@ void	init_t_iso(t_iso *iso)
 	iso->x_min = WIN_WIDTH;
 	iso->y_max = 0;
 	iso->y_min = WIN_HEIGHT;
+	iso->z_max = 0;
+	iso->z_min = 0;
 	iso->z_fact = 0;
 	iso->x_offset = 0;
 	iso->y_offset = 0;

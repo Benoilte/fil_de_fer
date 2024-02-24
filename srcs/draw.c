@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:20:20 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 14:26:41 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:03:33 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,40 +86,40 @@ void	ft_bresenham(t_master *master, t_point *current, t_point *next)
 	val.dy = 2 * val.ey;
 	val.i = 0.0;
 	if (val.ex_abs > val.ey_abs)
-		slope_first_case(master->img, val, val.x1, val.y1);
+		slope_first_case(master->img, val, current->color, next->color);
 	else
-		slope_second_case(master->img, val, val.x1, val.y1);
+		slope_second_case(master->img, val, current->color, next->color);
 }
 
-void	slope_first_case(t_data img, t_bres val, double x1, double y1)
+void	slope_first_case(t_data img, t_bres val, int col1, int col2)
 {
 	while (val.i <= val.ex_abs)
 	{
-		my_mlx_pixel_put(&img, x1, y1,
-			get_color(0x4A235A, 0xF1C40F, get_perc(y1, val.y2, val.ey)));
+		my_mlx_pixel_put(&img, (int)val.x1, (int)val.y1,
+			get_color(col1, col2, get_perc(val.y1, val.y2, val.ey)));
 		val.i++;
-		x1 += val.x_rise;
+		val.x1 += val.x_rise;
 		val.ex -= val.dy;
 		if (val.ex < 0.0)
 		{
-			y1 += val.y_rise;
+			val.y1 += val.y_rise;
 			val.ex += val.dx;
 		}
 	}
 }
 
-void	slope_second_case(t_data img, t_bres val, double x1, double y1)
+void	slope_second_case(t_data img, t_bres val, int col1, int col2)
 {
 	while (val.i <= val.ey_abs)
 	{
-		my_mlx_pixel_put(&img, x1, y1,
-			get_color(0x4A235A, 0xF1C40F, get_perc(x1, val.x2, val.ex)));
+		my_mlx_pixel_put(&img, (int)val.x1, (int)val.y1,
+			get_color(col1, col2, get_perc(val.x1, val.x2, val.ex)));
 		val.i++;
-		y1 += val.y_rise;
+		val.y1 += val.y_rise;
 		val.ey -= val.dx;
 		if (val.ey < 0.0)
 		{
-			x1 += val.x_rise;
+			val.x1 += val.x_rise;
 			val.ey += val.dy;
 		}
 	}

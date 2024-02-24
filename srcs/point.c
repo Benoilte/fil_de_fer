@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:41:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/22 13:46:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:22:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ void	fill_point(t_master *master, int x, int y, char *val)
 		point->z = ft_atoi(*z_and_col);
 		point->z_iso = point->z * master->map->iso->z_fact;
 		cart_to_iso(master, point);
-		ft_strlcpy(point->color, z_and_col[1], 10);
+		point->color = ft_atoh(z_and_col[1]);
 		free_strstr(z_and_col);
+		master->map->color_is_set = 1;
 	}
 	else
 	{
 		point->z = ft_atoi(val);
+		point->color = WHITE;
 		point->z_iso = point->z * master->map->iso->z_fact;
 		cart_to_iso(master, point);
 	}
@@ -46,6 +48,11 @@ void	update_point(t_master *master, int x, int y)
 	point->x = (x * master->map->iso->size * master->map->zoom);
 	point->y = (y * master->map->iso->size * master->map->zoom);
 	point->z_iso = point->z * master->map->iso->z_fact * master->map->zoom;
+	if (master->map->color_is_set == 0)
+		point->color = get_color(PURPLE, GOLD,
+				get_perc(point->z,
+					master->map->iso->z_max,
+					master->map->iso->z_max - master->map->iso->z_min));
 	rotate_x(master, x, y);
 	rotate_y(master, x, y);
 	rotate_z(master, x, y);
@@ -68,8 +75,8 @@ void	cart_to_iso(t_master *master, t_point *point)
 
 int	x_cart_to_iso(int x, int y, int z)
 {
-	double angle;
-	double offset;
+	double	angle;
+	double	offset;
 
 	angle = 30 * (M_PI / 180);
 	offset = 120 * (M_PI / 180);
@@ -78,8 +85,8 @@ int	x_cart_to_iso(int x, int y, int z)
 
 int	y_cart_to_iso(int x, int y, int z)
 {
-	double angle;
-	double offset;
+	double	angle;
+	double	offset;
 
 	angle = 30 * (M_PI / 180);
 	offset = 120 * (M_PI / 180);

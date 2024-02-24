@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:05:43 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 14:23:56 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:41:04 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 double	get_perc(double start, double end, double size)
 {
-	return (fabs(end - start) / size);
+	if (size == 0.0)
+		return (0.0);
+	return (1 - (fabs(end - start) / size));
 }
 
 int	get_color(int color1, int color2, float fraction)

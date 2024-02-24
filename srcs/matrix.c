@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 17:14:08 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:23:00 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,8 @@ void	get_min_max(t_master *master, t_point *point)
 		master->map->iso->y_max = point->y_iso_dst;
 	else if (point->y_iso_dst < master->map->iso->y_min)
 		master->map->iso->y_min = point->y_iso_dst;
+	if (point->z > master->map->iso->z_max)
+		master->map->iso->z_max = point->z;
+	else if (point->z < master->map->iso->z_min)
+		master->map->iso->z_min = point->z;
 }

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 14:23:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:02:15 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_cart
 	int	x_min;
 	int	y_max;
 	int	y_min;
+	int	z_max;
+	int	z_min;
 	int	x_offset;
 	int	y_offset;
 	int	size;
@@ -51,6 +53,8 @@ typedef struct s_iso
 	int	x_min;
 	int	y_max;
 	int	y_min;
+	int	z_max;
+	int	z_min;
 	int	z_fact;
 	int	x_offset;
 	int	y_offset;
@@ -65,7 +69,7 @@ typedef struct s_point
 	int		x_iso_dst;
 	int		y_iso_dst;
 	int		z_iso;
-	char	color[10];
+	int		color;
 }	t_point;
 
 typedef struct s_bres
@@ -99,6 +103,7 @@ typedef struct s_map
 {
 	int		height;
 	int		width;
+	int		color_is_set;
 	float	zoom;
 	double	rot_x;
 	double	rot_y;
@@ -193,8 +198,8 @@ int				close_mlx(t_master *master);
 void			draw_map(t_master *master);
 void			draw_lines(t_master *master, int x, int y);
 void			ft_bresenham(t_master *master, t_point *current, t_point *next);
-void			slope_first_case(t_data img, t_bres val, double x1, double y1);
-void			slope_second_case(t_data img, t_bres val, double x1, double y1);
+void			slope_first_case(t_data img, t_bres val, int col1, int col2);
+void			slope_second_case(t_data img, t_bres val, int col1, int col2);
 
 // color.h
 
