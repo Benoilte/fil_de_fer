@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/20 22:21:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:27:03 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_master	*master;
 
+	ft_printf("atoh: %d\n", ft_atoh("0xFFFFFF"));
+	return (0);
 	if (argc < 2)
 	{
 		ft_printf("Error: File is missing\n");

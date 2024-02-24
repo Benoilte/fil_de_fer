@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 17:15:49 by bebrandt          #+#    #+#              #
-#    Updated: 2024/02/05 18:35:18 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/02/24 15:22:14 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT_SRCS		=	ft_atoi.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 					ft_putnbr_hex_fd.c ft_putnbr_uint_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 					ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 					ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-					ft_atoli.c
+					ft_atoli.c ft_atoh.c
 					
 LIBFT_OBJ		=	$(LIBFT_SRCS:.c=.o)
 
