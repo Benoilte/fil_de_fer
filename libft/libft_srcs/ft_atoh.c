@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:51:00 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 15:26:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:34:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ static int	check_sign(char *hex, int *i)
 	if (hex[*i] == '+' || hex[*i] == '-')
 	{
 		if (hex[*i] == '-')
+		{
+			*i += 1;
 			return (-1);
+		}
 		*i += 1;
 	}
 	return (1);
