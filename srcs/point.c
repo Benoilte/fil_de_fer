@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:41:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 13:48:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 22:53:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	fill_point(t_master *master, int x, int y, char *val)
 		is_malloc_or_exit(master, z_and_col, "Memory allocation, fill_point()");
 		point->z = ft_atoi(*z_and_col);
 		point->z_proj = point->z * master->map->z_fact;
-		cart_to_iso(master, point);
+		iso(point);
 		point->color = ft_atoh(z_and_col[1]);
 		free_strstr(z_and_col);
 		master->map->color_is_set = 1;
@@ -36,7 +36,7 @@ void	fill_point(t_master *master, int x, int y, char *val)
 		point->z = ft_atoi(val);
 		point->color = WHITE;
 		point->z_proj = point->z * master->map->z_fact;
-		cart_to_iso(master, point);
+		iso(point);
 	}
 }
 
@@ -56,39 +56,19 @@ void	update_point(t_master *master, int x, int y)
 	rotate_x(master, x, y);
 	rotate_y(master, x, y);
 	rotate_z(master, x, y);
-	cart_to_iso(master, point);
+	iso(point);
 }
 
-void	cart_to_iso(t_master *master, t_point *point)
-{
-	int	x;
-	int	y;
-	int	z;
+/*
+** Convert coordinate to iso projection
+*/
 
-	(void)master;
-	x = point->x;
-	y = point->y;
-	z = point->z_proj;
-	point->x_proj = x_cart_to_iso(x, y, z);
-	point->y_proj = y_cart_to_iso(x, y, z);
-}
-
-int	x_cart_to_iso(int x, int y, int z)
+void	iso(t_point *point)
 {
 	double	angle;
-	double	offset;
 
 	angle = 30 * (M_PI / 180);
-	offset = 120 * (M_PI / 180);
-	return (x * cos(angle) + y * cos(angle + offset) + z * cos(angle - offset));
+	point->x_proj = (point->x - point->y) * cos(angle);
+	point->y_proj = -(point->z_proj) + (point->x + point->y) * sin(angle);
 }
 
-int	y_cart_to_iso(int x, int y, int z)
-{
-	double	angle;
-	double	offset;
-
-	angle = 30 * (M_PI / 180);
-	offset = 120 * (M_PI / 180);
-	return (x * sin(angle) + y * sin(angle + offset) + z * sin(angle - offset));
-}
