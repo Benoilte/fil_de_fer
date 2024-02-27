@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 13:49:56 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 22:54:17 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,9 +163,7 @@ void			get_min_max(t_master *master, t_point *point);
 
 void			fill_point(t_master *master, int x, int y, char *val);
 void			update_point(t_master *master, int x, int y);
-void			cart_to_iso(t_master *master, t_point *point);
-int				x_cart_to_iso(int x, int y, int z);
-int				y_cart_to_iso(int x, int y, int z);
+void			iso(t_point *point);
 
 // event.c
 

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 13:49:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 23:08:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_map	*init_map(t_master *master)
 	map->y_min = WIN_HEIGHT;
 	map->z_max = 0;
 	map->z_min = 0;
-	map->z_fact = 0;
+	map->z_fact = 1;
 	map->x_offset = 0;
 	map->y_offset = 0;
 	map->size = 0;
@@ -57,4 +57,3 @@ t_point	*init_point(t_master *master)
 	is_malloc_or_exit(master, point, "Memory allocation, init_point()");
 	return (point);
 }
-
