@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:01:01 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 16:53:22 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:46:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ void	update_size(t_master *master)
 		master->map->iso->x_max = 0;
 		master->map->iso->x_min = WIN_WIDTH;
 		master->map->iso->size--;
-		update_matrix(master);
-		get_x_offset(master);
-		get_y_offset(master);
+		update_map(master);
 	}
 	while ((master->map->iso->y_max + master->map->iso->y_offset > WIN_HEIGHT
 			|| master->map->iso->y_min + master->map->iso->y_offset < 0)
@@ -44,8 +42,22 @@ void	update_size(t_master *master)
 		master->map->iso->y_max = 0;
 		master->map->iso->y_min = WIN_HEIGHT;
 		master->map->iso->z_fact--;
-		update_matrix(master);
-		get_x_offset(master);
-		get_y_offset(master);
+		update_map(master);
 	}
+}
+
+void	update_map(t_master *master)
+{
+	update_matrix(master);
+	get_x_offset(master);
+	get_y_offset(master);
+}
+
+void	replace_map(t_master *master)
+{
+	if (master->map->zoom < 0)
+		master->map->zoom = 0;
+	update_matrix(master);
+	mlx_destroy_image(master->mlx.mlx_ptr, master->img.img);
+	draw_map(master);
 }

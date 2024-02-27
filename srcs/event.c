@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/22 11:00:26 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:52:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,24 @@ int	key_hook(int key, t_master *master)
 	if (key == MAIN_PAD_ESC)
 		close_mlx(master);
 	else if (key == ARROW_LEFT)
-		move_left(master);
+		master->map->iso->x_offset -= 10;
 	else if (key == ARROW_UP)
-		move_up(master);
+		master->map->iso->y_offset -= 10;
 	else if (key == ARROW_RIGHT)
-		move_right(master);
+		master->map->iso->x_offset += 10;
 	else if (key == ARROW_DOWN)
-		move_down(master);
+		master->map->iso->y_offset += 10;
 	else if (key == MAIN_PAD_PLUS || key == NUM_PAD_PLUS)
-		level_up(master);
+		master->map->iso->z_fact++;
 	else if (key == MAIN_PAD_MINUS || key == NUM_PAD_MINUS)
-		level_down(master);
+		master->map->iso->z_fact--;
 	else if (key == MAIN_PAD_I)
-		zoom_in(key, master);
+		zoom(0.1, master);
 	else if (key == MAIN_PAD_O)
-		zoom_out(key, master);
+		zoom(-0.1, master);
 	else
 		key_hook_next(key, master);
+	replace_map(master);
 	return (0);
 }
 
@@ -61,9 +62,9 @@ int	mouse_hook(int button, int x, int y, t_master *master)
 	(void)x;
 	(void)y;
 	if (button == MOUSE_SCROLL_DOWN)
-		zoom_in(button, master);
+		zoom(0.05, master);
 	else if (button == MOUSE_SCROLL_UP)
-		zoom_out(button, master);
+		zoom(-0.05, master);
 	return (0);
 }
 
