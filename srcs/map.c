@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 16:15:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:44:28 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ void	fill_map(t_master *master)
 	master->map->height = ft_lstsize(master->file_lst);
 	master->map->width = get_width(master);
 	master->map->matrix = init_matrix(master);
-	master->map->cart->size = get_dist_btwn_cart_point(master);
-	master->map->iso->size = 30;
-	master->map->iso->z_fact = 25;
+	master->map->size = 30;
+	master->map->z_fact = 25;
 	fill_matrix(master);
 	get_x_offset(master);
 	get_y_offset(master);

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 12:58:40 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:49:56 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,41 +34,14 @@
 #  define WIN_HEIGHT	900
 # endif
 
-typedef struct s_cart
-{
-	int	x_max;
-	int	x_min;
-	int	y_max;
-	int	y_min;
-	int	z_max;
-	int	z_min;
-	int	x_offset;
-	int	y_offset;
-	int	size;
-}	t_cart;
-
-typedef struct s_iso
-{
-	int	x_max;
-	int	x_min;
-	int	y_max;
-	int	y_min;
-	int	z_max;
-	int	z_min;
-	int	z_fact;
-	int	x_offset;
-	int	y_offset;
-	int	size;
-}	t_iso;
-
 typedef struct s_point
 {
 	int		x;
 	int		y;
 	int		z;
-	int		x_iso_dst;
-	int		y_iso_dst;
-	int		z_iso;
+	int		x_proj;
+	int		y_proj;
+	int		z_proj;
 	int		color;
 }	t_point;
 
@@ -103,13 +76,21 @@ typedef struct s_map
 {
 	int		height;
 	int		width;
+	int		x_max;
+	int		x_min;
+	int		y_max;
+	int		y_min;
+	int		z_max;
+	int		z_min;
+	int		z_fact;
+	int		x_offset;
+	int		y_offset;
+	int		size;
 	int		color_is_set;
 	double	zoom;
 	double	rot_x;
 	double	rot_y;
 	double	rot_z;
-	t_cart	*cart;
-	t_iso	*iso;
 	t_point	***matrix;
 }	t_map;
 
@@ -147,8 +128,6 @@ void			fdf_run(t_master *master);
 t_master		*init_master(char *file);
 t_map			*init_map(t_master *master);
 t_point			*init_point(t_master *master);
-void			init_t_cart(t_cart *cart);
-void			init_t_iso(t_iso *iso);
 
 // input_validation.c
 

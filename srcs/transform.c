@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:28:26 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 12:57:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:46:02 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	zoom(double zoom, t_master *master)
 
 void	reset_map(t_master *master)
 {
-	master->map->iso->size = 30;
-	master->map->iso->z_fact = 25;
+	master->map->size = 30;
+	master->map->z_fact = 25;
 	master->map->zoom = 1;
 	master->map->rot_x = 0;
 	master->map->rot_y = 0;

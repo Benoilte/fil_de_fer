@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 16:23:00 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:45:03 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,16 @@ void	update_matrix(t_master *master)
 
 void	get_min_max(t_master *master, t_point *point)
 {
-	if (point->x_iso_dst > master->map->iso->x_max)
-		master->map->iso->x_max = point->x_iso_dst;
-	else if (point->x_iso_dst < master->map->iso->x_min)
-		master->map->iso->x_min = point->x_iso_dst;
-	if (point->y_iso_dst > master->map->iso->y_max)
-		master->map->iso->y_max = point->y_iso_dst;
-	else if (point->y_iso_dst < master->map->iso->y_min)
-		master->map->iso->y_min = point->y_iso_dst;
-	if (point->z > master->map->iso->z_max)
-		master->map->iso->z_max = point->z;
-	else if (point->z < master->map->iso->z_min)
-		master->map->iso->z_min = point->z;
+	if (point->x_proj > master->map->x_max)
+		master->map->x_max = point->x_proj;
+	else if (point->x_proj < master->map->x_min)
+		master->map->x_min = point->x_proj;
+	if (point->y_proj > master->map->y_max)
+		master->map->y_max = point->y_proj;
+	else if (point->y_proj < master->map->y_min)
+		master->map->y_min = point->y_proj;
+	if (point->z > master->map->z_max)
+		master->map->z_max = point->z;
+	else if (point->z < master->map->z_min)
+		master->map->z_min = point->z;
 }
