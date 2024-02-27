@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/19 14:33:32 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:41:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ void	clean(t_master *master)
 
 void	clean_map(t_map *map)
 {
-	if (map->cart)
-		free(map->cart);
-	if (map->iso)
-		free(map->iso);
 	if (map->matrix)
 		clean_matrix(map->matrix);
 	free(map);

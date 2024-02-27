@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 16:54:59 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:49:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,22 @@ t_map	*init_map(t_master *master)
 
 	map = (t_map *)malloc(1 * sizeof(t_map));
 	is_malloc_or_exit(master, map, "Memory allocation, init_map()");
-	map->cart = NULL;
-	map->iso = NULL;
 	map->matrix = NULL;
 	map->color_is_set = 0;
 	map->zoom = 1;
 	map->rot_x = 0;
 	map->rot_y = 0;
 	map->rot_z = 0;
-	map->cart = (t_cart *)malloc(1 * sizeof(t_cart));
-	is_malloc_or_exit(master, map->cart, "Memory allocation, init_map->cart()");
-	init_t_cart(map->cart);
-	map->iso = (t_iso *)malloc(1 * sizeof(t_iso));
-	is_malloc_or_exit(master, map->iso, "Memory allocation, init_map->iso()");
-	init_t_iso(map->iso);
+	map->x_max = 0;
+	map->x_min = WIN_WIDTH;
+	map->y_max = 0;
+	map->y_min = WIN_HEIGHT;
+	map->z_max = 0;
+	map->z_min = 0;
+	map->z_fact = 0;
+	map->x_offset = 0;
+	map->y_offset = 0;
+	map->size = 0;
 	return (map);
 }
 
@@ -56,29 +58,3 @@ t_point	*init_point(t_master *master)
 	return (point);
 }
 
-void	init_t_cart(t_cart *cart)
-{
-	cart->x_max = 0;
-	cart->x_min = WIN_WIDTH;
-	cart->y_max = 0;
-	cart->y_min = WIN_HEIGHT;
-	cart->z_max = 0;
-	cart->z_min = 0;
-	cart->x_offset = 0;
-	cart->y_offset = 0;
-	cart->size = 0;
-}
-
-void	init_t_iso(t_iso *iso)
-{
-	iso->x_max = 0;
-	iso->x_min = WIN_WIDTH;
-	iso->y_max = 0;
-	iso->y_min = WIN_HEIGHT;
-	iso->z_max = 0;
-	iso->z_min = 0;
-	iso->z_fact = 0;
-	iso->x_offset = 0;
-	iso->y_offset = 0;
-	iso->size = 0;
-}

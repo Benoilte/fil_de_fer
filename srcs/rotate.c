@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:29:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 12:21:58 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:36:24 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	rotate_x(t_master *master, int x, int y)
 
 	angle = master->map->rot_x * (M_PI / 180);
 	point = (master->map->matrix)[y][x];
-	new_y = ((point->y) * cos(angle)) - ((point->z_iso) * sin(angle));
-	new_z = ((point->y) * sin(angle)) + ((point->z_iso) * cos(angle));
+	new_y = ((point->y) * cos(angle)) - ((point->z_proj) * sin(angle));
+	new_z = ((point->y) * sin(angle)) + ((point->z_proj) * cos(angle));
 	point->y = new_y;
-	point->z_iso = new_z;
+	point->z_proj = new_z;
 }
 
 void	rotate_y(t_master *master, int x, int y)
@@ -47,10 +47,10 @@ void	rotate_y(t_master *master, int x, int y)
 
 	angle = master->map->rot_y * (M_PI / 180);
 	point = (master->map->matrix)[y][x];
-	new_x = ((point->x) * cos(angle)) - ((point->z_iso) * sin(angle));
-	new_z = ((point->x) * sin(angle)) + ((point->z_iso) * cos(angle));
+	new_x = ((point->x) * cos(angle)) - ((point->z_proj) * sin(angle));
+	new_z = ((point->x) * sin(angle)) + ((point->z_proj) * cos(angle));
 	point->x = new_x;
-	point->z_iso = new_z;
+	point->z_proj = new_z;
 }
 
 void	rotate_z(t_master *master, int x, int y)
