@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:29:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/22 11:07:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:21:58 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	rotate(t_master *master, char axis, double angle)
 		master->map->rot_y += angle;
 	if (axis == 'z')
 		master->map->rot_z += angle;
-	mlx_destroy_image(master->mlx.mlx_ptr, master->img.img);
-	update_matrix(master);
-	draw_map(master);
+	replace_map(master);
 }
 
 void	rotate_x(t_master *master, int x, int y)

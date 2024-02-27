@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 16:52:26 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:58:40 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_map
 	int		height;
 	int		width;
 	int		color_is_set;
-	float	zoom;
+	double	zoom;
 	double	rot_x;
 	double	rot_y;
 	double	rot_z;
@@ -169,6 +169,8 @@ int				get_dist_btwn_cart_point(t_master *master);
 void			get_x_offset(t_master *master);
 void			get_y_offset(t_master *master);
 void			update_size(t_master *master);
+void			update_map(t_master *master);
+void			replace_map(t_master *master);
 
 // matrix.c
 
@@ -206,23 +208,10 @@ void			slope_second_case(t_data img, t_bres val, int col1, int col2);
 int				get_color(int color1, int color2, float fraction);
 double			get_perc(double start, double end, double size);
 
-// move.c
+// transform.c
 
-void			move_left(t_master *master);
-void			move_up(t_master *master);
-void			move_right(t_master *master);
-void			move_down(t_master *master);
+void			zoom(double zoom, t_master *master);
 void			reset_map(t_master *master);
-
-// level.c
-
-void			level_up(t_master *master);
-void			level_down(t_master *master);
-
-// zoom.c
-
-void			zoom_in(int key_code, t_master *master);
-void			zoom_out(int key_code, t_master *master);
 
 // rotate.c
 
