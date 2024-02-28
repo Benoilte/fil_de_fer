@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 10:29:51 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:05:54 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ t_map	*init_map(t_fdf *fdf)
 	is_malloc_or_exit(fdf, map, "Memory allocation, init_map()");
 	map->matrix = NULL;
 	map->color_is_set = 0;
-	map->x_max = 0;
-	map->x_min = WIN_WIDTH;
-	map->y_max = 0;
-	map->y_min = WIN_HEIGHT;
-	map->z_max = 0;
-	map->z_min = 0;
+	map->x_max = INT_MIN;
+	map->x_min = INT_MAX;
+	map->y_max = INT_MIN;
+	map->y_min = INT_MAX;
+	map->z_max = INT_MIN;
+	map->z_min = INT_MAX;
 	return (map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:29:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 12:21:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:38:18 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	rotate(t_fdf *fdf, char axis, double angle)
 		fdf->camera->rot_y += angle;
 	if (axis == 'z')
 		fdf->camera->rot_z += angle;
-	replace_map(fdf);
 }
 
 void	rotate_x(t_fdf *fdf, int x, int y)
