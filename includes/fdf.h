@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 10:10:38 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:19:08 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ void			rotate(t_fdf *fdf, char axis, double angle);
 void			rotate_x(t_fdf *fdf, int x, int y);
 void			rotate_y(t_fdf *fdf, int x, int y);
 void			rotate_z(t_fdf *fdf, int x, int y);
+void			view(int key, t_fdf *fdf);
 
 // mlx_utils.c
 

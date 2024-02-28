@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 10:24:16 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:18:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ int	key_hook_next(int key, t_fdf *fdf)
 		rotate(fdf, 'z', 3.6);
 	else if (key == MAIN_PAD_Y || key == MAIN_PAD_Z)
 		rotate(fdf, 'z', -3.6);
+	else if (key == NUM_PAD_1 || key == NUM_PAD_2 || key == NUM_PAD_3
+		|| key == NUM_PAD_4 || key == NUM_PAD_5 || key == NUM_PAD_6)
+		view(key, fdf);
 	else if (key == MAIN_PAD_R)
 		reset_map(fdf);
 	return (0);

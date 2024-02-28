@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:29:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:55:14 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:21:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,34 @@ void	rotate_z(t_fdf *fdf, int x, int y)
 	new_y = ((point->x) * sin(angle)) + ((point->y) * cos(angle));
 	point->x = new_x;
 	point->y = new_y;
+}
+
+/*
+1 : top
+2 : bottom
+3 : left
+4 : right
+5 : front
+6 : back
+*/
+
+void	view(int key, t_fdf *fdf)
+{
+	if (fdf->camera->projection == ISO)
+		return ;
+	fdf->camera->rot_x = 0;
+	fdf->camera->rot_y = 0;
+	fdf->camera->rot_z = 0;
+	if (key == NUM_PAD_2)
+		fdf->camera->rot_x = 180;
+	if (key == NUM_PAD_3 || key == NUM_PAD_4 || key == NUM_PAD_5
+		|| key == NUM_PAD_6)
+		fdf->camera->rot_x = 90;
+	if (key == NUM_PAD_3)
+		fdf->camera->rot_y = -90;
+	if (key == NUM_PAD_4)
+		fdf->camera->rot_y = 90;
+	if (key == NUM_PAD_6)
+		fdf->camera->rot_y = 180;
+	update_map(fdf);
 }
