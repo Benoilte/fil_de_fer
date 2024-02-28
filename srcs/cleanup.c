@@ -6,29 +6,29 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 13:41:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:07:33 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	clean_and_exit(t_master *master, char *msg, int status)
+void	clean_and_exit(t_fdf *fdf, char *msg, int status)
 {
-	clean(master);
+	clean(fdf);
 	if (msg)
 		ft_printf("Error: %s\n", msg);
 	exit (status);
 }
 
-void	clean(t_master *master)
+void	clean(t_fdf *fdf)
 {
-	if (master)
+	if (fdf)
 	{
-		if (master->file_lst)
-			ft_lstclear(&(master->file_lst), &del);
-		if (master->map)
-			clean_map(master->map);
-		free(master);
+		if (fdf->file_lst)
+			ft_lstclear(&(fdf->file_lst), &del);
+		if (fdf->map)
+			clean_map(fdf->map);
+		free(fdf);
 	}
 }
 

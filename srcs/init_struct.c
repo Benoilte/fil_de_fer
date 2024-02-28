@@ -6,30 +6,30 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 23:08:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:10:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-t_master	*init_master(char *file)
+t_fdf	*init_fdf(char *file)
 {
-	t_master	*master;
+	t_fdf	*fdf;
 
-	master = (t_master *)malloc(1 * sizeof(t_master));
-	is_malloc_or_exit(master, master, "Memory allocation, init_master()");
-	master->file_name = file;
-	master->file_lst = NULL;
-	master->map = NULL;
-	return (master);
+	fdf = (t_fdf *)malloc(1 * sizeof(t_fdf));
+	is_malloc_or_exit(fdf, fdf, "Memory allocation, init_fdf()");
+	fdf->file_name = file;
+	fdf->file_lst = NULL;
+	fdf->map = NULL;
+	return (fdf);
 }
 
-t_map	*init_map(t_master *master)
+t_map	*init_map(t_fdf *fdf)
 {
 	t_map	*map;
 
 	map = (t_map *)malloc(1 * sizeof(t_map));
-	is_malloc_or_exit(master, map, "Memory allocation, init_map()");
+	is_malloc_or_exit(fdf, map, "Memory allocation, init_map()");
 	map->matrix = NULL;
 	map->color_is_set = 0;
 	map->zoom = 1;
@@ -49,11 +49,11 @@ t_map	*init_map(t_master *master)
 	return (map);
 }
 
-t_point	*init_point(t_master *master)
+t_point	*init_point(t_fdf *fdf)
 {
 	t_point	*point;
 
 	point = (t_point *)malloc(1 * sizeof(t_point));
-	is_malloc_or_exit(master, point, "Memory allocation, init_point()");
+	is_malloc_or_exit(fdf, point, "Memory allocation, init_point()");
 	return (point);
 }
