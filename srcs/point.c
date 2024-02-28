@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:41:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:54:24 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:14:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	fill_point(t_fdf *fdf, int x, int y, char *val)
 		is_malloc_or_exit(fdf, z_and_col, "Memory allocation, fill_point()");
 		point->z = ft_atoi(*z_and_col);
 		point->z_proj = point->z * fdf->camera->z_fact;
-		iso(point);
+		set_projection(fdf, point);
 		point->color = ft_atoh(z_and_col[1]);
 		free_strstr(z_and_col);
 		fdf->map->color_is_set = 1;
@@ -36,7 +36,7 @@ void	fill_point(t_fdf *fdf, int x, int y, char *val)
 		point->z = ft_atoi(val);
 		point->color = WHITE;
 		point->z_proj = point->z * fdf->camera->z_fact;
-		iso(point);
+		set_projection(fdf, point);
 	}
 }
 
@@ -56,18 +56,26 @@ void	update_point(t_fdf *fdf, int x, int y)
 	rotate_x(fdf, x, y);
 	rotate_y(fdf, x, y);
 	rotate_z(fdf, x, y);
-	iso(point);
+	set_projection(fdf, point);
 }
 
 /*
 ** Convert coordinate to iso projection
 */
 
-void	iso(t_point *point)
+void	set_projection(t_fdf *fdf, t_point *point)
 {
 	double	angle;
 
 	angle = 30 * (M_PI / 180);
-	point->x_proj = (point->x - point->y) * cos(angle);
-	point->y_proj = -(point->z_proj) + (point->x + point->y) * sin(angle);
+	if (fdf->camera->projection == ISO)
+	{
+		point->x_proj = (point->x - point->y) * cos(angle);
+		point->y_proj = -(point->z_proj) + (point->x + point->y) * sin(angle);
+	}
+	else
+	{
+		point->x_proj = point->x;
+		point->y_proj = point->y;
+	}
 }
