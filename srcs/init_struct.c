@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:21:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:49:21 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:29:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_camera	*init_camera(t_fdf *fdf)
 	camera->rot_z = 0;
 	camera->x_offset = 0;
 	camera->y_offset = 0;
-	camera->projection = 1;
+	camera->projection = 0;
 	return (camera);
 }
 

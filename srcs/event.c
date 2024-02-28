@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:48:22 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:24:16 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ int	key_hook(int key, t_fdf *fdf)
 
 int	key_hook_next(int key, t_fdf *fdf)
 {
-	if (key == MAIN_PAD_D)
+	if (key == MAIN_PAD_L)
+		fdf->camera->projection = 0;
+	else if (key == MAIN_PAD_P)
+		fdf->camera->projection = 1;
+	else if (key == MAIN_PAD_D)
 		rotate(fdf, 'x', 3.6);
 	else if (key == MAIN_PAD_A)
 		rotate(fdf, 'x', -3.6);

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:57:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:10:38 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@
 # ifndef WIN_HEIGHT
 #  define WIN_HEIGHT	900
 # endif
+
+typedef enum
+{
+	ISO,
+	PARALLEL
+}	t_projection;
 
 typedef struct s_point
 {
@@ -169,7 +175,7 @@ void			get_min_max(t_fdf *fdf, t_point *point);
 
 void			fill_point(t_fdf *fdf, int x, int y, char *val);
 void			update_point(t_fdf *fdf, int x, int y);
-void			iso(t_point *point);
+void			set_projection(t_fdf *fdf, t_point *point);
 
 // event.c
 
