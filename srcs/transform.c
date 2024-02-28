@@ -6,28 +6,28 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 10:28:26 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 13:46:02 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:13:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	zoom(double zoom, t_master *master)
+void	zoom(double zoom, t_fdf *fdf)
 {
-	if (zoom > 0 || (zoom < 0 && master->map->zoom > 0))
-		master->map->zoom += zoom;
-	replace_map(master);
+	if (zoom > 0 || (zoom < 0 && fdf->map->zoom > 0))
+		fdf->map->zoom += zoom;
+	replace_map(fdf);
 }
 
-void	reset_map(t_master *master)
+void	reset_map(t_fdf *fdf)
 {
-	master->map->size = 30;
-	master->map->z_fact = 25;
-	master->map->zoom = 1;
-	master->map->rot_x = 0;
-	master->map->rot_y = 0;
-	master->map->rot_z = 0;
-	update_map(master);
-	update_size(master);
-	replace_map(master);
+	fdf->map->size = 30;
+	fdf->map->z_fact = 25;
+	fdf->map->zoom = 1;
+	fdf->map->rot_x = 0;
+	fdf->map->rot_y = 0;
+	fdf->map->rot_z = 0;
+	update_map(fdf);
+	update_size(fdf);
+	replace_map(fdf);
 }

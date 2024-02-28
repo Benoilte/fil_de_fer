@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 13:44:28 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:11:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 parse txt file and return a linked list of struct with a string as member.
 */
-t_list	*fill_map_lst(t_master *master)
+t_list	*fill_map_lst(t_fdf *fdf)
 {
 	int		fd;
 	int		check_new_line;
@@ -24,7 +24,7 @@ t_list	*fill_map_lst(t_master *master)
 	t_list	*input;
 
 	input = NULL;
-	fd = open_file_or_exit(master);
+	fd = open_file_or_exit(fdf);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -44,40 +44,40 @@ t_list	*fill_map_lst(t_master *master)
 	return (input);
 }
 
-void	fill_map(t_master *master)
+void	fill_map(t_fdf *fdf)
 {
-	master->map->height = ft_lstsize(master->file_lst);
-	master->map->width = get_width(master);
-	master->map->matrix = init_matrix(master);
-	master->map->size = 30;
-	master->map->z_fact = 25;
-	fill_matrix(master);
-	get_x_offset(master);
-	get_y_offset(master);
-	update_size(master);
-	update_matrix(master);
+	fdf->map->height = ft_lstsize(fdf->file_lst);
+	fdf->map->width = get_width(fdf);
+	fdf->map->matrix = init_matrix(fdf);
+	fdf->map->size = 30;
+	fdf->map->z_fact = 25;
+	fill_matrix(fdf);
+	get_x_offset(fdf);
+	get_y_offset(fdf);
+	update_size(fdf);
+	update_matrix(fdf);
 }
 
-int	get_width(t_master *master)
+int	get_width(t_fdf *fdf)
 {
 	int		width;
 	char	**coords;
 
-	coords = ft_split(master->file_lst->content, ' ');
-	is_malloc_or_exit(master, coords, "Memory allocation, fill_map()");
+	coords = ft_split(fdf->file_lst->content, ' ');
+	is_malloc_or_exit(fdf, coords, "Memory allocation, fill_map()");
 	width = check_size_strstr(coords);
 	free_strstr(coords);
 	return (width);
 }
 
-int	get_dist_btwn_cart_point(t_master *master)
+int	get_dist_btwn_cart_point(t_fdf *fdf)
 {
 	int	dist;
 	int	height;
 	int	width;
 
-	height = master->map->height;
-	width = master->map->width;
+	height = fdf->map->height;
+	width = fdf->map->width;
 	dist = 30;
 	while (((WIN_HEIGHT / 2) - ((height * dist) / 2))
 		>= WIN_HEIGHT)

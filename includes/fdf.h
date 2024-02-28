@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/27 22:54:17 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:06:44 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct s_vars {
 	void	*win_ptr;
 }	t_vars;
 
-typedef struct s_master
+typedef struct s_fdf
 {
 	char	*file_name;
 	t_list	*file_lst;
@@ -115,68 +115,68 @@ typedef struct s_master
 	char	proj[5];
 	t_vars	mlx;
 	t_data	img;
-}	t_master;
+}	t_fdf;
 
 // fdf.c
 
-void			initialization(t_master *master);
-void			fill_fdf(t_master *master);
-void			fdf_run(t_master *master);
+void			initialization(t_fdf *fdf);
+void			fill_fdf(t_fdf *fdf);
+void			fdf_run(t_fdf *fdf);
 
 // init_struct.c
 
-t_master		*init_master(char *file);
-t_map			*init_map(t_master *master);
-t_point			*init_point(t_master *master);
+t_fdf		*init_fdf(char *file);
+t_map			*init_map(t_fdf *fdf);
+t_point			*init_point(t_fdf *fdf);
 
 // input_validation.c
 
 void			check_file_name(char *file);
 void			check_file_exist(char *file);
-void			check_file_empty(t_master *master);
+void			check_file_empty(t_fdf *fdf);
 int				check_size_strstr(char **strstr);
 
 // map.c
 
-t_list			*fill_map_lst(t_master *master);
-void			fill_map(t_master *master);
-int				get_width(t_master *master);
-int				get_dist_btwn_cart_point(t_master *master);
+t_list			*fill_map_lst(t_fdf *fdf);
+void			fill_map(t_fdf *fdf);
+int				get_width(t_fdf *fdf);
+int				get_dist_btwn_cart_point(t_fdf *fdf);
 
 // map_utils.c
 
-void			get_x_offset(t_master *master);
-void			get_y_offset(t_master *master);
-void			update_size(t_master *master);
-void			update_map(t_master *master);
-void			replace_map(t_master *master);
+void			get_x_offset(t_fdf *fdf);
+void			get_y_offset(t_fdf *fdf);
+void			update_size(t_fdf *fdf);
+void			update_map(t_fdf *fdf);
+void			replace_map(t_fdf *fdf);
 
 // matrix.c
 
-t_point			***init_matrix(t_master *master);
-void			init_width_matrix(t_master *master, t_point **matrix);
-void			fill_matrix(t_master *master);
-void			update_matrix(t_master *master);
-void			get_min_max(t_master *master, t_point *point);
+t_point			***init_matrix(t_fdf *fdf);
+void			init_width_matrix(t_fdf *fdf, t_point **matrix);
+void			fill_matrix(t_fdf *fdf);
+void			update_matrix(t_fdf *fdf);
+void			get_min_max(t_fdf *fdf, t_point *point);
 
 // point.c
 
-void			fill_point(t_master *master, int x, int y, char *val);
-void			update_point(t_master *master, int x, int y);
+void			fill_point(t_fdf *fdf, int x, int y, char *val);
+void			update_point(t_fdf *fdf, int x, int y);
 void			iso(t_point *point);
 
 // event.c
 
-int				key_hook(int key, t_master *master);
-int				key_hook_next(int key, t_master *master);
-int				mouse_hook(int button, int x, int y, t_master *master);
-int				close_mlx(t_master *master);
+int				key_hook(int key, t_fdf *fdf);
+int				key_hook_next(int key, t_fdf *fdf);
+int				mouse_hook(int button, int x, int y, t_fdf *fdf);
+int				close_mlx(t_fdf *fdf);
 
 // draw.c
 
-void			draw_map(t_master *master);
-void			draw_lines(t_master *master, int x, int y);
-void			ft_bresenham(t_master *master, t_point *current, t_point *next);
+void			draw_map(t_fdf *fdf);
+void			draw_lines(t_fdf *fdf, int x, int y);
+void			ft_bresenham(t_fdf *fdf, t_point *current, t_point *next);
 void			slope_first_case(t_data img, t_bres val, int col1, int col2);
 void			slope_second_case(t_data img, t_bres val, int col1, int col2);
 
@@ -187,15 +187,15 @@ double			get_perc(double start, double end, double size);
 
 // transform.c
 
-void			zoom(double zoom, t_master *master);
-void			reset_map(t_master *master);
+void			zoom(double zoom, t_fdf *fdf);
+void			reset_map(t_fdf *fdf);
 
 // rotate.c
 
-void			rotate(t_master *master, char axis, double angle);
-void			rotate_x(t_master *master, int x, int y);
-void			rotate_y(t_master *master, int x, int y);
-void			rotate_z(t_master *master, int x, int y);
+void			rotate(t_fdf *fdf, char axis, double angle);
+void			rotate_x(t_fdf *fdf, int x, int y);
+void			rotate_y(t_fdf *fdf, int x, int y);
+void			rotate_z(t_fdf *fdf, int x, int y);
 
 // mlx_utils.c
 
@@ -208,13 +208,13 @@ void			del(void *content);
 
 // check_malloc.c
 
-void			is_malloc_or_exit(t_master *master, void *ptr, char *msg);
-int				open_file_or_exit(t_master *master);
+void			is_malloc_or_exit(t_fdf *fdf, void *ptr, char *msg);
+int				open_file_or_exit(t_fdf *fdf);
 
 // cleanup.c
 
-void			clean_and_exit(t_master *master, char *msg, int status);
-void			clean(t_master *master);
+void			clean_and_exit(t_fdf *fdf, char *msg, int status);
+void			clean(t_fdf *fdf);
 void			clean_map(t_map *map);
 void			clean_matrix(t_point ***matrix);
 void			clean_point(t_point *point);

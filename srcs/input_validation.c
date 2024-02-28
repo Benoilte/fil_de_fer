@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:47:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/05 19:09:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:10:28 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	check_file_exist(char *file)
 /*
 Exit the program with an error message if the file is empty
 */
-void	check_file_empty(t_master *master)
+void	check_file_empty(t_fdf *fdf)
 {
-	if (ft_lstsize(master->file_lst) == 0)
+	if (ft_lstsize(fdf->file_lst) == 0)
 	{
-		clean(master);
+		clean(fdf);
 		ft_printf("Erorr: Empty file\n");
 		exit(EXIT_FAILURE);
 	}

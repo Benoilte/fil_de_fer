@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/24 16:44:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:09:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_master	*master;
+	t_fdf	*fdf;
 
 	if (argc < 2)
 	{
@@ -30,36 +30,36 @@ int	main(int argc, char **argv)
 	{
 		check_file_name(argv[1]);
 		check_file_exist(argv[1]);
-		master = init_master(argv[1]);
-		initialization(master);
-		check_file_empty(master);
-		fill_fdf(master);
-		fdf_run(master);
-		clean(master);
+		fdf = init_fdf(argv[1]);
+		initialization(fdf);
+		check_file_empty(fdf);
+		fill_fdf(fdf);
+		fdf_run(fdf);
+		clean(fdf);
 	}
 	return (0);
 }
 
-void	initialization(t_master *master)
+void	initialization(t_fdf *fdf)
 {
-	master->file_lst = fill_map_lst(master);
-	master->map = init_map(master);
+	fdf->file_lst = fill_map_lst(fdf);
+	fdf->map = init_map(fdf);
 }
 
-void	fill_fdf(t_master *master)
+void	fill_fdf(t_fdf *fdf)
 {
-	ft_strlcpy(master->proj, "ISO", 4);
-	fill_map(master);
-	master->mlx.mlx_ptr = mlx_init();
-	master->mlx.win_ptr = mlx_new_window(master->mlx.mlx_ptr, WIN_WIDTH,
-			WIN_HEIGHT, master->file_name);
+	ft_strlcpy(fdf->proj, "ISO", 4);
+	fill_map(fdf);
+	fdf->mlx.mlx_ptr = mlx_init();
+	fdf->mlx.win_ptr = mlx_new_window(fdf->mlx.mlx_ptr, WIN_WIDTH,
+			WIN_HEIGHT, fdf->file_name);
 }
 
-void	fdf_run(t_master *master)
+void	fdf_run(t_fdf *fdf)
 {
-	draw_map(master);
-	mlx_key_hook(master->mlx.win_ptr, &key_hook, master);
-	mlx_mouse_hook (master->mlx.win_ptr, &mouse_hook, master);
-	mlx_hook(master->mlx.win_ptr, 17, 1L << 19, &close_mlx, master);
-	mlx_loop(master->mlx.mlx_ptr);
+	draw_map(fdf);
+	mlx_key_hook(fdf->mlx.win_ptr, &key_hook, fdf);
+	mlx_mouse_hook (fdf->mlx.win_ptr, &mouse_hook, fdf);
+	mlx_hook(fdf->mlx.win_ptr, 17, 1L << 19, &close_mlx, fdf);
+	mlx_loop(fdf->mlx.mlx_ptr);
 }
