@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:49:31 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:07:33 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:46:17 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	clean(t_fdf *fdf)
 			ft_lstclear(&(fdf->file_lst), &del);
 		if (fdf->map)
 			clean_map(fdf->map);
+		if (fdf->camera)
+			free(fdf->camera);
 		free(fdf);
 	}
 }
