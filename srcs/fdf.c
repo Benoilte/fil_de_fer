@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:09:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:58:38 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int	main(int argc, char **argv)
 void	initialization(t_fdf *fdf)
 {
 	fdf->file_lst = fill_map_lst(fdf);
+	fdf->camera = init_camera(fdf);
 	fdf->map = init_map(fdf);
 }
 
 void	fill_fdf(t_fdf *fdf)
 {
-	ft_strlcpy(fdf->proj, "ISO", 4);
 	fill_map(fdf);
 	fdf->mlx.mlx_ptr = mlx_init();
 	fdf->mlx.win_ptr = mlx_new_window(fdf->mlx.mlx_ptr, WIN_WIDTH,

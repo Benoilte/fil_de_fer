@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:06:44 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:57:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,22 @@ typedef struct s_map
 	int		y_min;
 	int		z_max;
 	int		z_min;
+	int		color_is_set;
+	t_point	***matrix;
+}	t_map;
+
+typedef struct s_camera
+{
+	int		projection;
+	double	zoom;
+	int		size;
 	int		z_fact;
 	int		x_offset;
 	int		y_offset;
-	int		size;
-	int		color_is_set;
-	double	zoom;
 	double	rot_x;
 	double	rot_y;
 	double	rot_z;
-	t_point	***matrix;
-}	t_map;
+}	t_camera;
 
 typedef struct s_data {
 	void	*img;
@@ -109,12 +114,12 @@ typedef struct s_vars {
 
 typedef struct s_fdf
 {
-	char	*file_name;
-	t_list	*file_lst;
-	t_map	*map;
-	char	proj[5];
-	t_vars	mlx;
-	t_data	img;
+	char		*file_name;
+	t_list		*file_lst;
+	t_map		*map;
+	t_camera	*camera;
+	t_vars		mlx;
+	t_data		img;
 }	t_fdf;
 
 // fdf.c
@@ -125,7 +130,8 @@ void			fdf_run(t_fdf *fdf);
 
 // init_struct.c
 
-t_fdf		*init_fdf(char *file);
+t_fdf			*init_fdf(char *file);
+t_camera		*init_camera(t_fdf *fdf);
 t_map			*init_map(t_fdf *fdf);
 t_point			*init_point(t_fdf *fdf);
 

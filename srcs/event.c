@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:08:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:48:22 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ int	key_hook(int key, t_fdf *fdf)
 	if (key == MAIN_PAD_ESC)
 		close_mlx(fdf);
 	else if (key == ARROW_LEFT)
-		fdf->map->x_offset -= 10;
+		fdf->camera->x_offset -= 10;
 	else if (key == ARROW_UP)
-		fdf->map->y_offset -= 10;
+		fdf->camera->y_offset -= 10;
 	else if (key == ARROW_RIGHT)
-		fdf->map->x_offset += 10;
+		fdf->camera->x_offset += 10;
 	else if (key == ARROW_DOWN)
-		fdf->map->y_offset += 10;
+		fdf->camera->y_offset += 10;
 	else if (key == MAIN_PAD_PLUS || key == NUM_PAD_PLUS)
-		fdf->map->z_fact++;
+		fdf->camera->z_fact++;
 	else if (key == MAIN_PAD_MINUS || key == NUM_PAD_MINUS)
-		fdf->map->z_fact--;
+		fdf->camera->z_fact--;
 	else if (key == MAIN_PAD_I)
 		zoom(0.1, fdf);
 	else if (key == MAIN_PAD_O)

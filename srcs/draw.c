@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:20:20 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:08:11 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:47:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	ft_bresenham(t_fdf *fdf, t_point *current, t_point *next)
 {
 	t_bres	val;
 
-	val.x1 = (double)current->x_proj + fdf->map->x_offset;
-	val.x2 = (double)next->x_proj + fdf->map->x_offset;
-	val.y1 = (double)current->y_proj + fdf->map->y_offset;
-	val.y2 = (double)next->y_proj + fdf->map->y_offset;
+	val.x1 = (double)current->x_proj + fdf->camera->x_offset;
+	val.x2 = (double)next->x_proj + fdf->camera->x_offset;
+	val.y1 = (double)current->y_proj + fdf->camera->y_offset;
+	val.y2 = (double)next->y_proj + fdf->camera->y_offset;
 	val.x_rise = 1.0;
 	val.y_rise = 1.0;
 	if (val.x1 > val.x2)

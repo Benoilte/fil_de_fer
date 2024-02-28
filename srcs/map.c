@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:11:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:51:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	fill_map(t_fdf *fdf)
 	fdf->map->height = ft_lstsize(fdf->file_lst);
 	fdf->map->width = get_width(fdf);
 	fdf->map->matrix = init_matrix(fdf);
-	fdf->map->size = 30;
-	fdf->map->z_fact = 25;
+	fdf->camera->size = 30;
+	fdf->camera->z_fact = 25;
 	fill_matrix(fdf);
 	get_x_offset(fdf);
 	get_y_offset(fdf);
