@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 12:19:08 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:19:33 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include <math.h>
+# include <limits.h>
 
 # include "../libft/includes/libft.h"
 # include "color.h"
@@ -34,11 +35,11 @@
 #  define WIN_HEIGHT	900
 # endif
 
-typedef enum
+enum e_projection
 {
 	ISO,
 	PARALLEL
-}	t_projection;
+};
 
 typedef struct s_point
 {

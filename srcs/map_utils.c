@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:01:01 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:51:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:32:42 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	update_size(t_fdf *fdf)
 			|| fdf->map->x_min + fdf->camera->x_offset < 0)
 		&& fdf->camera->size > 1)
 	{
-		fdf->map->x_max = 0;
-		fdf->map->x_min = WIN_WIDTH;
 		fdf->camera->size--;
 		update_map(fdf);
 	}
@@ -39,9 +37,10 @@ void	update_size(t_fdf *fdf)
 			|| fdf->map->y_min + fdf->camera->y_offset < 0)
 		&& fdf->camera->z_fact > 0)
 	{
-		fdf->map->y_max = 0;
-		fdf->map->y_min = WIN_HEIGHT;
-		fdf->camera->z_fact--;
+		if (fdf->camera->projection == ISO)
+			fdf->camera->z_fact--;
+		else
+			fdf->camera->size--;
 		update_map(fdf);
 	}
 }

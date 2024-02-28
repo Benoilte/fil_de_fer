@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:30:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:12:10 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:00:14 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,10 @@ void	update_matrix(t_fdf *fdf)
 	int		x;
 	int		y;
 
+	fdf->map->x_max = INT_MIN;
+	fdf->map->x_min = INT_MAX;
+	fdf->map->y_max = INT_MIN;
+	fdf->map->y_min = INT_MAX;
 	y = 0;
 	while ((fdf->map->matrix)[y])
 	{
