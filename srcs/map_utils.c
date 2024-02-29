@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:01:01 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 11:06:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:12:41 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	get_x_offset(t_fdf *fdf)
 {
-	fdf->camera->x_offset = (((WIN_WIDTH - MENU_W) / 2) - fdf->map->x_min)
+	fdf->camera->x_offset = (((WIN_W - MENU_W) / 2) - fdf->map->x_min)
 		- ((fdf->map->x_max - fdf->map->x_min) / 2);
 }
 
 void	get_y_offset(t_fdf *fdf)
 {
-	fdf->camera->y_offset = ((WIN_HEIGHT / 2) - fdf->map->y_min)
+	fdf->camera->y_offset = ((WIN_H / 2) - fdf->map->y_min)
 		- ((fdf->map->y_max - fdf->map->y_min) / 2);
 }
 
 void	update_size(t_fdf *fdf)
 {
-	while ((fdf->map->x_max + fdf->camera->x_offset > (WIN_WIDTH - MENU_W)
+	while ((fdf->map->x_max + fdf->camera->x_offset > (WIN_W - MENU_W)
 			|| fdf->map->x_min + fdf->camera->x_offset < 0)
 		&& fdf->camera->size > 1)
 	{
 		fdf->camera->size--;
 		update_map(fdf);
 	}
-	while ((fdf->map->y_max + fdf->camera->y_offset > WIN_HEIGHT
+	while ((fdf->map->y_max + fdf->camera->y_offset > WIN_H
 			|| fdf->map->y_min + fdf->camera->y_offset < 0)
 		&& fdf->camera->z_fact > 0)
 	{

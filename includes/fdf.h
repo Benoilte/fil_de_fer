@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 12:47:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:10:50 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@
 #  include "../mlx_linux/mlx.h"
 # endif
 
-# ifndef WIN_WIDTH
-#  define WIN_WIDTH		1440
+# ifndef WIN_W
+#  define WIN_W		1440
 # endif
 
 # ifndef MENU_W
 #  define MENU_W		200
 # endif
 
-# ifndef WIN_HEIGHT
-#  define WIN_HEIGHT	900
+# ifndef WIN_H
+#  define WIN_H	900
 # endif
 
 enum
