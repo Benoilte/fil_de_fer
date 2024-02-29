@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 21:39:22 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:24:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,14 @@ int	mouse_hook(int button, int x, int y, t_fdf *fdf)
 		zoom(0.05, fdf);
 	else if (button == MOUSE_SCROLL_UP)
 		zoom(-0.05, fdf);
+	return (0);
+}
+
+int	resize_mlx(t_fdf *fdf)
+{
+	fdf->camera->x_offset = -(fdf->map->x_min);
+	fdf->camera->y_offset = -(fdf->map->y_min);
+	replace_map(fdf);
 	return (0);
 }
 
