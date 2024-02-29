@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 13:41:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 10:14:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:31:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	update_point(t_fdf *fdf, int x, int y)
 	point->y = (y * fdf->camera->size * fdf->camera->zoom);
 	point->z_proj = point->z * fdf->camera->z_fact * fdf->camera->zoom;
 	if (fdf->map->color_is_set == 0)
-		point->color = get_color(PURPLE, GOLD,
+		point->color = get_color(fdf->map->color_1, fdf->map->color_2,
 				get_perc(point->z,
 					fdf->map->z_max,
 					fdf->map->z_max - fdf->map->z_min));
