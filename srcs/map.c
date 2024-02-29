@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 09:51:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:19:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,31 @@ int	get_width(t_fdf *fdf)
 	return (width);
 }
 
-int	get_dist_btwn_cart_point(t_fdf *fdf)
+void	print_menu(t_fdf *fdf)
 {
-	int	dist;
-	int	height;
-	int	width;
+	void	*mlx;
+	void	*win;
 
-	height = fdf->map->height;
-	width = fdf->map->width;
-	dist = 30;
-	while (((WIN_HEIGHT / 2) - ((height * dist) / 2))
-		>= WIN_HEIGHT)
-		dist--;
-	while (((WIN_WIDTH / 2) - ((width * dist) / 2))
-		>= WIN_WIDTH)
-		dist--;
-	return (dist);
+	mlx = fdf->mlx.mlx_ptr;
+	win = fdf->mlx.win_ptr;
+	mlx_string_put(mlx, win, 50, 50, WHITE, "Command Macos (Linux)");
+	mlx_string_put(mlx, win, 15, 100, WHITE, "Move: Arrows");
+	mlx_string_put(mlx, win, 15, 130, WHITE, "Zoom: scroll or (Pgup/Pgdn)");
+	mlx_string_put(mlx, win, 15, 160, WHITE, "Flatten: +/-");
+	mlx_string_put(mlx, win, 15, 190, WHITE, "Rotatation:");
+	mlx_string_put(mlx, win, 45, 220, WHITE, "X-Axis: W / S");
+	mlx_string_put(mlx, win, 45, 250, WHITE, "Y-Axis: A / D");
+	mlx_string_put(mlx, win, 45, 280, WHITE, "Z-Axis: X / Z (Y)");
+	mlx_string_put(mlx, win, 15, 310, WHITE, "Projection :");
+	mlx_string_put(mlx, win, 45, 340, WHITE, "ISO : I");
+	mlx_string_put(mlx, win, 45, 370, WHITE, "Parallel : P");
+	mlx_string_put(mlx, win, 15, 400, WHITE, "View in parallel:");
+	mlx_string_put(mlx, win, 45, 430, WHITE, "Top : 1");
+	mlx_string_put(mlx, win, 45, 460, WHITE, "Bottom : 2");
+	mlx_string_put(mlx, win, 45, 490, WHITE, "Left : 3");
+	mlx_string_put(mlx, win, 45, 520, WHITE, "Right : 4");
+	mlx_string_put(mlx, win, 45, 550, WHITE, "Front : 5");
+	mlx_string_put(mlx, win, 45, 580, WHITE, "Back : 6");
+	mlx_string_put(mlx, win, 15, 610, WHITE, "Change color : tab");
+	mlx_string_put(mlx, win, 15, 640, WHITE, "Reset : R");
 }

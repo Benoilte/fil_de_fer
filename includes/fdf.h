@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 22:56:12 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:03:10 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 
 # ifndef WIN_WIDTH
 #  define WIN_WIDTH		1440
+# endif
+
+# ifndef MENU_W
+#  define MENU_W		200
 # endif
 
 # ifndef WIN_HEIGHT
@@ -154,7 +158,7 @@ int				check_size_strstr(char **strstr);
 t_list			*fill_map_lst(t_fdf *fdf);
 void			fill_map(t_fdf *fdf);
 int				get_width(t_fdf *fdf);
-int				get_dist_btwn_cart_point(t_fdf *fdf);
+void			print_menu(t_fdf *fdf);
 
 // map_utils.c
 

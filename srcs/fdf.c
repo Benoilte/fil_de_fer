@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:39:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 23:28:41 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:00:15 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ void	fill_fdf(t_fdf *fdf)
 {
 	fill_map(fdf);
 	fdf->mlx.mlx_ptr = mlx_init();
+	is_malloc_or_exit(fdf, fdf->mlx.mlx_ptr, "Memory allocation, mlx_ptr()");
 	fdf->mlx.win_ptr = mlx_new_window(fdf->mlx.mlx_ptr, WIN_WIDTH,
 			WIN_HEIGHT, fdf->file_name);
+	is_malloc_or_exit(fdf, fdf->mlx.win_ptr, "Memory allocation, win_ptr()");
 }
 
 void	fdf_run(t_fdf *fdf)
 {
+	print_menu(fdf);
 	draw_map(fdf);
 	mlx_key_hook(fdf->mlx.win_ptr, &key_hook, fdf);
 	mlx_mouse_hook (fdf->mlx.win_ptr, &mouse_hook, fdf);

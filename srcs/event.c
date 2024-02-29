@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 09:24:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:20:49 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	key_hook(int key, t_fdf *fdf)
 		fdf->camera->x_offset += 10;
 	else if (key == ARROW_DOWN)
 		fdf->camera->y_offset += 10;
-	else if (key == MAIN_PAD_PLUS || key == NUM_PAD_PLUS)
+	else if (key == NUM_PAD_PLUS)
 		fdf->camera->z_fact++;
-	else if (key == MAIN_PAD_MINUS || key == NUM_PAD_MINUS)
+	else if (key == NUM_PAD_MINUS)
 		fdf->camera->z_fact--;
-	else if (key == MAIN_PAD_I)
+	else if (key == MAIN_PAD_PGUP)
 		zoom(0.1, fdf);
-	else if (key == MAIN_PAD_O)
+	else if (key == MAIN_PAD_PGDN)
 		zoom(-0.1, fdf);
 	else
 		key_hook_next(key, fdf);
@@ -40,21 +40,21 @@ int	key_hook(int key, t_fdf *fdf)
 
 int	key_hook_next(int key, t_fdf *fdf)
 {
-	if (key == MAIN_PAD_L)
+	if (key == MAIN_PAD_I)
 		fdf->camera->projection = 0;
 	else if (key == MAIN_PAD_P)
 		fdf->camera->projection = 1;
-	else if (key == MAIN_PAD_D)
+	else if (key == MAIN_PAD_W)
 		rotate(fdf, 'x', 3.6);
-	else if (key == MAIN_PAD_A)
-		rotate(fdf, 'x', -3.6);
-	if (key == MAIN_PAD_W)
-		rotate(fdf, 'y', 3.6);
 	else if (key == MAIN_PAD_S)
+		rotate(fdf, 'x', -3.6);
+	if (key == MAIN_PAD_A)
+		rotate(fdf, 'y', 3.6);
+	else if (key == MAIN_PAD_D)
 		rotate(fdf, 'y', -3.6);
-	if (key == MAIN_PAD_X)
-		rotate(fdf, 'z', 3.6);
 	else if (key == MAIN_PAD_Y || key == MAIN_PAD_Z)
+		rotate(fdf, 'z', 3.6);
+	if (key == MAIN_PAD_X)
 		rotate(fdf, 'z', -3.6);
 	else if (key == NUM_PAD_1 || key == NUM_PAD_2 || key == NUM_PAD_3
 		|| key == NUM_PAD_4 || key == NUM_PAD_5 || key == NUM_PAD_6)

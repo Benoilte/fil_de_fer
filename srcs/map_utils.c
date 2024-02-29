@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:01:01 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 22:32:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:06:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_x_offset(t_fdf *fdf)
 {
-	fdf->camera->x_offset = ((WIN_WIDTH / 2) - fdf->map->x_min)
+	fdf->camera->x_offset = (((WIN_WIDTH - MENU_W) / 2) - fdf->map->x_min)
 		- ((fdf->map->x_max - fdf->map->x_min) / 2);
 }
 
@@ -26,7 +26,7 @@ void	get_y_offset(t_fdf *fdf)
 
 void	update_size(t_fdf *fdf)
 {
-	while ((fdf->map->x_max + fdf->camera->x_offset > WIN_WIDTH
+	while ((fdf->map->x_max + fdf->camera->x_offset > (WIN_WIDTH - MENU_W)
 			|| fdf->map->x_min + fdf->camera->x_offset < 0)
 		&& fdf->camera->size > 1)
 	{
