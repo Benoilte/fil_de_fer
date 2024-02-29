@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:20:20 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 11:03:33 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:11:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	draw_map(t_fdf *fdf)
 	int		y;
 	t_point	***matrix;
 
-	fdf->img.img = mlx_new_image(fdf->mlx.mlx_ptr, WIN_WIDTH - MENU_W, WIN_HEIGHT);
+	fdf->img.img = mlx_new_image(fdf->mlx.mlx_ptr, WIN_W - MENU_W, WIN_H);
 	fdf->img.addr = mlx_get_data_addr(fdf->img.img,
 			&fdf->img.bits_per_pixel,
 			&fdf->img.line_length, &fdf->img.endian);
