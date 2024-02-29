@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:05:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 12:17:33 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:40:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define MAIN_PAD_9			57
 # define MAIN_PAD_PGUP		65365
 # define MAIN_PAD_PGDN		65366
+# define MAIN_PAD_TAB		65289
 # define MAIN_PAD_U			117
 # define MAIN_PAD_P			112
 # define MAIN_PAD_L			108

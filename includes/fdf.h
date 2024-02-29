@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 11:03:10 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:47:13 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef struct s_map
 	int		y_min;
 	int		z_max;
 	int		z_min;
+	int		color_1;
+	int		color_2;
 	int		color_is_set;
 	t_point	***matrix;
 }	t_map;
@@ -206,6 +208,7 @@ double			get_perc(double start, double end, double size);
 // transform.c
 
 void			zoom(double zoom, t_fdf *fdf);
+void			change_color(t_fdf *fdf);
 void			reset_map(t_fdf *fdf);
 
 // rotate.c

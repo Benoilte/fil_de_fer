@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 12:20:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:41:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	key_hook(int key, t_fdf *fdf)
 		zoom(0.1, fdf);
 	else if (key == MAIN_PAD_PGDN)
 		zoom(-0.1, fdf);
+	else if (key == MAIN_PAD_TAB)
+		change_color(fdf);
 	else
 		key_hook_next(key, fdf);
 	replace_map(fdf);
