@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/28 22:19:33 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:56:12 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 #  define WIN_HEIGHT	900
 # endif
 
-enum e_projection
+enum
 {
 	ISO,
 	PARALLEL
@@ -183,6 +183,7 @@ void			set_projection(t_fdf *fdf, t_point *point);
 int				key_hook(int key, t_fdf *fdf);
 int				key_hook_next(int key, t_fdf *fdf);
 int				mouse_hook(int button, int x, int y, t_fdf *fdf);
+int				resize_mlx(t_fdf *fdf);
 int				close_mlx(t_fdf *fdf);
 
 // draw.c
