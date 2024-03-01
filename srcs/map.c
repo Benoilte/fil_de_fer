@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 22:04:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 12:19:52 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:28:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	print_menu(t_fdf *fdf)
 
 	mlx = fdf->mlx.mlx_ptr;
 	win = fdf->mlx.win_ptr;
-	mlx_string_put(mlx, win, 50, 50, WHITE, "Command Macos (Linux)");
+	mlx_string_put(mlx, win, 15, 50, WHITE, "Command Macos (Linux)");
 	mlx_string_put(mlx, win, 15, 100, WHITE, "Move: Arrows");
 	mlx_string_put(mlx, win, 15, 130, WHITE, "Zoom: scroll or (Pgup/Pgdn)");
 	mlx_string_put(mlx, win, 15, 160, WHITE, "Flatten: +/-");
