@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 11:43:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/01/21 18:04:04 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/03/01 12:19:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_set_flag(const char *str, t_printf_lst *lst)
 
 	j = 0;
 	while (ft_is_flag(str[j]) && str[j] != '\0')
-	{	
+	{
 		if (str[j] == '0')
 			lst->flag_zero = 1;
 		if (str[j] == '+')
@@ -58,7 +58,7 @@ int	ft_is_flag(char c)
 
 /*
 flag '0' is ignored with flag '-' or if a precision is set.
-flag ' ' is ignored if a flag '+' is present. 
+flag ' ' is ignored if a flag '+' is present.
 */
 void	ft_set_flag_priority(t_printf_lst *lst)
 {
