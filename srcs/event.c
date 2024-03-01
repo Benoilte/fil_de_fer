@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:27:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 12:41:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/03/01 12:24:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ int	key_hook_next(int key, t_fdf *fdf)
 	else if (key == MAIN_PAD_P)
 		fdf->camera->projection = 1;
 	else if (key == MAIN_PAD_W)
-		rotate(fdf, 'x', 3.6);
+		rotate(fdf, 'x', 3);
 	else if (key == MAIN_PAD_S)
-		rotate(fdf, 'x', -3.6);
+		rotate(fdf, 'x', -3);
 	if (key == MAIN_PAD_A)
-		rotate(fdf, 'y', 3.6);
+		rotate(fdf, 'y', 3);
 	else if (key == MAIN_PAD_D)
-		rotate(fdf, 'y', -3.6);
+		rotate(fdf, 'y', -3);
 	else if (key == MAIN_PAD_Y || key == MAIN_PAD_Z)
-		rotate(fdf, 'z', 3.6);
+		rotate(fdf, 'z', 3);
 	if (key == MAIN_PAD_X)
-		rotate(fdf, 'z', -3.6);
+		rotate(fdf, 'z', -3);
 	else if (key == NUM_PAD_1 || key == NUM_PAD_2 || key == NUM_PAD_3
 		|| key == NUM_PAD_4 || key == NUM_PAD_5 || key == NUM_PAD_6)
 		view(key, fdf);
