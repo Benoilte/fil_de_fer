@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/02/29 13:10:50 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:31:16 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@
 # endif
 
 # ifndef MENU_W
-#  define MENU_W		200
+#  define MENU_W	300
 # endif
 
 # ifndef WIN_H
-#  define WIN_H	900
+#  define WIN_H		900
 # endif
 
 enum
